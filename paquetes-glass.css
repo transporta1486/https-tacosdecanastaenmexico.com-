@@ -1,0 +1,439 @@
+/* ======================================================= */
+/* PAQUETES GLASS — Pricing futurista / HUD corporativo    */
+/* ======================================================= */
+
+@property --shine-o {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: false;
+}
+
+@property --neo-pulse {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: false;
+}
+
+.tabla-paquetes--neo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: clamp(1.25rem, 4vw, 2rem);
+    margin: 0;
+    padding:
+        clamp(3rem, 8vw, 5rem)
+        clamp(0.75rem, 4vw, 2rem)
+        clamp(3.5rem, 9vw, 5.5rem);
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 200, 255, 0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 20% 100%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(120, 80, 255, 0.06) 0%, transparent 50%),
+        linear-gradient(180deg, #060810 0%, #0a0e16 50%, #080a10 100%);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.tabla-paquetes--neo::before {
+    content: "[ PRICING_MATRIX v4.2 // PAQUETES CORPORATIVOS ]";
+    display: block;
+    width: 100%;
+    margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.4375rem, 2vw, 0.5625rem);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(0, 220, 255, 0.65);
+    order: -2;
+}
+
+.tabla-paquetes--neo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-image:
+        linear-gradient(rgba(0, 220, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 220, 255, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 90% 75% at 50% 45%, #000 15%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 45%, #000 15%, transparent 78%);
+    pointer-events: none;
+    z-index: 0;
+    animation: neoGridPulse 8s ease-in-out infinite;
+}
+
+@keyframes neoGridPulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.16; }
+}
+
+/* ── Terminal de paquete ── */
+.tabla-paquetes--neo .paquete-card {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 min(100%, 320px);
+    max-width: 360px;
+    width: 100%;
+    padding:
+        clamp(2rem, 5vw, 2.75rem)
+        clamp(1.5rem, 4vw, 2rem)
+        clamp(1.75rem, 4vw, 2.25rem);
+    text-align: center;
+    --shine-x: 50%;
+    --shine-y: 40%;
+    --shine-o: 0;
+    --neo-pulse: 0;
+    background-image:
+        radial-gradient(
+            circle 180px at var(--shine-x) var(--shine-y),
+            rgba(0, 220, 255, calc(var(--shine-o) * 0.1)) 0%,
+            rgba(255, 107, 53, calc(var(--shine-o) * 0.03)) 40%,
+            transparent 65%
+        ),
+        linear-gradient(
+            165deg,
+            rgba(0, 220, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.04) 8%,
+            rgba(8, 12, 22, 0.72) 35%,
+            rgba(4, 6, 12, 0.78) 100%
+        );
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(0, 220, 255, 0.22);
+    border-top: 2px solid rgba(0, 240, 255, 0.35);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.45);
+    border-radius: 4px;
+    box-shadow:
+        inset 0 16px 32px rgba(0, 220, 255, 0.06),
+        inset 0 -18px 36px rgba(0, 0, 0, 0.38),
+        0 0 0 1px rgba(0, 220, 255, 0.08),
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(0, 200, 255, calc(var(--shine-o) * 0.04));
+    transition: --shine-o 0.4s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    overflow: hidden;
+}
+
+.tabla-paquetes--neo .paquete-card.hero-glass--touch {
+    transform: translateY(-1px);
+    border-color: rgba(0, 240, 255, 0.28);
+    box-shadow:
+        inset 0 18px 36px rgba(0, 220, 255, 0.06),
+        inset 0 -18px 36px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(0, 240, 255, 0.1),
+        0 24px 60px rgba(0, 0, 0, 0.55),
+        0 0 50px rgba(0, 220, 255, calc(var(--shine-o) * 0.06));
+}
+
+/* Esquinas HUD */
+.tabla-paquetes--neo .paquete-card::before,
+.tabla-paquetes--neo .paquete-card::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.tabla-paquetes--neo .paquete-card::before {
+    top: 10px;
+    left: 10px;
+    border-top: 2px solid rgba(0, 240, 255, 0.55);
+    border-left: 2px solid rgba(0, 240, 255, 0.55);
+}
+
+.tabla-paquetes--neo .paquete-card::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 2px solid rgba(0, 240, 255, 0.35);
+    border-right: 2px solid rgba(0, 240, 255, 0.35);
+}
+
+.tabla-paquetes--neo .paquete-card h3 {
+    position: relative;
+    z-index: 2;
+    margin: 0 0 0.25rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 0 20px rgba(0, 220, 255, 0.25);
+}
+
+.tabla-paquetes--neo .paquete-card h3::after {
+    content: "TIER_STANDARD";
+    display: block;
+    margin-top: 0.35rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.4375rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: rgba(0, 220, 255, 0.45);
+}
+
+/* ── Precio digital ── */
+.tabla-paquetes--neo .precio {
+    position: relative;
+    z-index: 2;
+    margin: clamp(1rem, 3vw, 1.5rem) 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(2.5rem, 8vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #00e8ff !important;
+    text-shadow:
+        0 0 12px rgba(0, 232, 255, 0.5),
+        0 0 32px rgba(0, 200, 255, 0.25);
+}
+
+.tabla-paquetes--neo .precio span {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(160, 180, 200, 0.75) !important;
+    text-shadow: none;
+}
+
+/* ── Lista de features ── */
+.tabla-paquetes--neo .paquete-card ul {
+    position: relative;
+    z-index: 2;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 clamp(1.5rem, 4vw, 2rem);
+    text-align: left;
+}
+
+.tabla-paquetes--neo .paquete-card li {
+    position: relative;
+    margin-bottom: 0.75rem;
+    padding-left: 0.25rem;
+    font-size: clamp(0.8125rem, 2.5vw, 0.9375rem);
+    line-height: 1.5;
+    color: rgba(200, 210, 225, 0.88) !important;
+    border-bottom: 1px solid rgba(0, 220, 255, 0.06);
+    padding-bottom: 0.65rem;
+}
+
+.tabla-paquetes--neo .paquete-card li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* ── Botón CTA cyber ── */
+.tabla-paquetes--neo .btn-paquete {
+    position: relative;
+    z-index: 2;
+    display: block;
+    padding: clamp(0.85rem, 2.5vw, 1rem) clamp(1rem, 3vw, 1.25rem);
+    font-size: clamp(0.8125rem, 2.2vw, 0.875rem);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.98) !important;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 180, 220, 0.35) 0%,
+            rgba(0, 120, 160, 0.45) 100%
+        );
+    border: 1px solid rgba(0, 240, 255, 0.45);
+    border-radius: 4px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 20px rgba(0, 200, 255, 0.2),
+        0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.tabla-paquetes--neo .btn-paquete:hover {
+    transform: translateY(-1px);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 200, 240, 0.45) 0%,
+            rgba(0, 140, 180, 0.55) 100%
+        );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        0 0 32px rgba(0, 220, 255, 0.35),
+        0 12px 28px rgba(0, 0, 0, 0.4);
+    color: #fff !important;
+}
+
+/* ── Paquete Premium — tier destacado ── */
+.tabla-paquetes--neo .paquete-card.destacado {
+    transform: scale(1.03);
+    border-color: rgba(255, 140, 60, 0.45);
+    border-top-color: rgba(255, 180, 100, 0.55);
+    background-image:
+        radial-gradient(
+            circle 200px at var(--shine-x) var(--shine-y),
+            rgba(255, 160, 80, calc(var(--shine-o) * 0.12)) 0%,
+            rgba(0, 220, 255, calc(var(--shine-o) * 0.04)) 45%,
+            transparent 68%
+        ),
+        linear-gradient(
+            165deg,
+            rgba(255, 140, 60, 0.12) 0%,
+            rgba(0, 220, 255, 0.06) 10%,
+            rgba(12, 10, 20, 0.75) 38%,
+            rgba(6, 4, 14, 0.8) 100%
+        );
+    box-shadow:
+        inset 0 18px 36px rgba(255, 180, 100, 0.08),
+        inset 0 -18px 36px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(255, 140, 60, 0.2),
+        0 0 40px rgba(255, 107, 53, 0.15),
+        0 24px 60px rgba(0, 0, 0, 0.55);
+    animation: neoPremiumGlow 4s ease-in-out infinite;
+}
+
+@keyframes neoPremiumGlow {
+    0%, 100% {
+        box-shadow:
+            inset 0 18px 36px rgba(255, 180, 100, 0.08),
+            inset 0 -18px 36px rgba(0, 0, 0, 0.42),
+            0 0 0 1px rgba(255, 140, 60, 0.2),
+            0 0 35px rgba(255, 107, 53, 0.12),
+            0 24px 60px rgba(0, 0, 0, 0.55);
+    }
+    50% {
+        box-shadow:
+            inset 0 18px 36px rgba(255, 180, 100, 0.1),
+            inset 0 -18px 36px rgba(0, 0, 0, 0.42),
+            0 0 0 1px rgba(255, 160, 80, 0.35),
+            0 0 55px rgba(255, 107, 53, 0.22),
+            0 28px 70px rgba(0, 0, 0, 0.58);
+    }
+}
+
+.tabla-paquetes--neo .paquete-card.destacado.hero-glass--touch {
+    transform: scale(1.03) translateY(-1px);
+}
+
+.tabla-paquetes--neo .paquete-card.destacado::before {
+    border-color: rgba(255, 180, 100, 0.65);
+}
+
+.tabla-paquetes--neo .paquete-card.destacado::after {
+    border-color: rgba(255, 140, 60, 0.45);
+}
+
+.tabla-paquetes--neo .paquete-card.destacado h3::after {
+    content: "TIER_PREMIUM // RECOMENDADO";
+    color: rgba(255, 160, 80, 0.65);
+}
+
+.tabla-paquetes--neo .paquete-card.destacado .precio {
+    color: #ffb347 !important;
+    text-shadow:
+        0 0 14px rgba(255, 140, 60, 0.55),
+        0 0 36px rgba(255, 107, 53, 0.3);
+}
+
+.tabla-paquetes--neo .paquete-card.destacado .btn-paquete {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 120, 50, 0.55) 0%,
+            rgba(255, 80, 30, 0.65) 100%
+        );
+    border-color: rgba(255, 180, 100, 0.5);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        0 0 24px rgba(255, 107, 53, 0.3),
+        0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.tabla-paquetes--neo .paquete-card.destacado .btn-paquete:hover {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 140, 70, 0.65) 0%,
+            rgba(255, 90, 40, 0.75) 100%
+        );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        0 0 40px rgba(255, 107, 53, 0.45),
+        0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.tabla-paquetes--neo .recomendado {
+    position: absolute;
+    top: -0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    padding: 0.35rem 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.5625rem, 2vw, 0.6875rem);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.98);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 107, 53, 0.95) 0%,
+            rgba(255, 160, 80, 0.9) 100%
+        );
+    border: 1px solid rgba(255, 220, 160, 0.45);
+    border-radius: 999px;
+    box-shadow:
+        0 0 20px rgba(255, 107, 53, 0.45),
+        0 4px 16px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+    .tabla-paquetes--neo {
+        flex-direction: column;
+        align-items: center;
+        padding: 2.5rem 0.75rem 3rem;
+    }
+
+    .tabla-paquetes--neo .paquete-card {
+        max-width: 100%;
+    }
+
+    .tabla-paquetes--neo .paquete-card.destacado {
+        transform: none;
+        order: -1;
+    }
+
+    .tabla-paquetes--neo .paquete-card.destacado.hero-glass--touch {
+        transform: translateY(-2px);
+    }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .tabla-paquetes--neo .paquete-card {
+        background: rgba(8, 12, 22, 0.95);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tabla-paquetes--neo::after,
+    .tabla-paquetes--neo .paquete-card.destacado {
+        animation: none;
+    }
+
+    .tabla-paquetes--neo .paquete-card,
+    .tabla-paquetes--neo .btn-paquete {
+        transition: none;
+    }
+}

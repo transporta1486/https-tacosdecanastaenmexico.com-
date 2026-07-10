@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso de Privacidad Integral | Tacos de Canasta en MÃ©xico</title>
+    <meta name="description" content="Aviso de Privacidad Integral de Tacos de Canasta en MÃ©xico. Conoce cÃ³mo recabamos, usamos y protegemos tus datos personales conforme a la LFPDPPP.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tacoscanasta.com/privacidad.html" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#C0392B">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <link rel="icon" type="image/jpeg" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --legal-bg: #0f0f11;
+            --legal-surface: rgba(255, 255, 255, 0.04);
+            --legal-border: rgba(255, 255, 255, 0.08);
+            --legal-text: rgba(235, 235, 240, 0.92);
+            --legal-muted: rgba(180, 180, 190, 0.82);
+            --legal-accent: #ffec00;
+            --legal-accent-soft: rgba(255, 236, 0, 0.12);
+            --legal-warn: #ff6b35;
+            --legal-info: rgba(100, 180, 255, 0.15);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--legal-text);
+            background: var(--legal-bg);
+            min-height: 100vh;
+        }
+
+        .legal-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--legal-border);
+        }
+
+        .legal-header__brand {
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--legal-accent);
+            text-decoration: none;
+        }
+
+        .legal-header__back {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--legal-muted);
+            text-decoration: none;
+            padding: 0.5rem 0.85rem;
+            border: 1px solid var(--legal-border);
+            border-radius: 8px;
+            transition: color 0.2s, border-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .legal-header__back:hover {
+            color: var(--legal-accent);
+            border-color: rgba(255, 236, 0, 0.3);
+        }
+
+        .legal-hero {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 1.5rem;
+            text-align: center;
+        }
+
+        .legal-hero__badge {
+            display: inline-block;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #6eb5ff;
+            background: var(--legal-info);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+
+        .legal-hero h1 {
+            font-size: clamp(1.5rem, 4.5vw, 2rem);
+            font-weight: 700;
+            line-height: 1.25;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-hero__meta {
+            font-size: 0.8125rem;
+            color: var(--legal-muted);
+            letter-spacing: 0.04em;
+        }
+
+        .legal-body {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 1.25rem 3.5rem;
+        }
+
+        .legal-intro {
+            padding: 1.25rem 1.35rem;
+            margin-bottom: 2rem;
+            background: var(--legal-surface);
+            border: 1px solid var(--legal-border);
+            border-left: 3px solid #6eb5ff;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.9375rem;
+            color: var(--legal-muted);
+        }
+
+        .legal-intro strong {
+            color: var(--legal-text);
+        }
+
+        .legal-section {
+            margin-bottom: 2.25rem;
+            padding: 1.5rem 1.35rem;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--legal-border);
+            border-radius: 14px;
+            box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.015);
+        }
+
+        .legal-section h2 {
+            display: flex;
+            align-items: baseline;
+            gap: 0.65rem;
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--legal-accent);
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+            line-height: 1.35;
+        }
+
+        .legal-section__num {
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #6eb5ff;
+            opacity: 0.95;
+        }
+
+        .legal-section p {
+            margin-bottom: 0.85rem;
+            font-size: 0.9375rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .legal-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .legal-section ul,
+        .legal-section ol {
+            margin: 0.75rem 0 0.85rem 1.25rem;
+            font-size: 0.9375rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.5rem;
+            text-align: justify;
+        }
+
+        .legal-data-table {
+            width: 100%;
+            margin: 1rem 0;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .legal-data-table th,
+        .legal-data-table td {
+            padding: 0.65rem 0.75rem;
+            text-align: left;
+            border: 1px solid var(--legal-border);
+            vertical-align: top;
+        }
+
+        .legal-data-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--legal-accent);
+            font-weight: 600;
+            font-size: 0.8125rem;
+            letter-spacing: 0.04em;
+        }
+
+        .legal-data-table td {
+            color: var(--legal-muted);
+        }
+
+        .legal-highlight {
+            padding: 0.85rem 1rem;
+            margin: 0.85rem 0;
+            background: var(--legal-accent-soft);
+            border: 1px solid rgba(255, 236, 0, 0.2);
+            border-radius: 10px;
+            font-size: 0.875rem;
+            color: var(--legal-text);
+        }
+
+        .legal-info-box {
+            padding: 0.85rem 1rem;
+            margin: 0.85rem 0;
+            background: var(--legal-info);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            border-radius: 10px;
+            font-size: 0.875rem;
+        }
+
+        .legal-contact-link {
+            color: var(--legal-accent);
+            font-weight: 600;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .legal-contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .legal-arco-list {
+            list-style: none;
+            margin: 0.75rem 0;
+            padding: 0;
+        }
+
+        .legal-arco-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            padding: 0.55rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            text-align: left;
+        }
+
+        .legal-arco-list li:last-child {
+            border-bottom: none;
+        }
+
+        .legal-arco-list strong {
+            flex-shrink: 0;
+            min-width: 7rem;
+            color: var(--legal-accent);
+            font-size: 0.8125rem;
+            letter-spacing: 0.06em;
+        }
+
+        .legal-footer-note {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem 2.5rem;
+            border-top: 1px solid var(--legal-border);
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--legal-muted);
+        }
+
+        .legal-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .legal-nav-links a {
+            font-size: 0.8125rem;
+            color: var(--legal-muted);
+            text-decoration: none;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid var(--legal-border);
+            border-radius: 6px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .legal-nav-links a:hover {
+            color: var(--legal-accent);
+            border-color: rgba(255, 236, 0, 0.25);
+        }
+
+        @media (max-width: 600px) {
+            .legal-data-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .legal-arco-list strong {
+                min-width: 5.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .legal-hero {
+                padding: 3rem 2rem 2rem;
+            }
+
+            .legal-body {
+                padding: 0 2rem 4rem;
+            }
+
+            .legal-section {
+                padding: 1.75rem 1.65rem;
+            }
+        }
+    </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CLPWH2JNGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CLPWH2JNGD');
+    </script>
+</head>
+<body>
+
+    <header class="legal-header">
+        <a href="index.html" class="legal-header__brand">Tacos de Canasta en MÃ©xico</a>
+        <a href="index.html" class="legal-header__back">&larr; Volver al inicio</a>
+    </header>
+
+    <div class="legal-hero">
+        <span class="legal-hero__badge">LFPDPPP &middot; INAI</span>
+        <h1>Aviso de Privacidad Integral</h1>
+        <p class="legal-hero__meta">Ãšltima actualizaciÃ³n: <strong>Junio de 2026</strong></p>
+    </div>
+
+    <main class="legal-body">
+
+        <div class="legal-intro">
+            <p>En cumplimiento con la <strong>Ley Federal de ProtecciÃ³n de Datos Personales en PosesiÃ³n de los Particulares (LFPDPPP)</strong>, su Reglamento y los lineamientos emitidos por el Instituto Nacional de Transparencia, Acceso a la InformaciÃ³n y ProtecciÃ³n de Datos Personales (INAI), ponemos a su disposiciÃ³n el presente <strong>Aviso de Privacidad Integral</strong>.</p>
+            <p style="margin-top:0.75rem;margin-bottom:0;">Este documento describe cÃ³mo recabamos, utilizamos, almacenamos y protegemos sus datos personales cuando usted utiliza nuestro sitio web, solicita cotizaciones, realiza pedidos de comida a domicilio o contrata servicios de banquetes y eventos corporativos.</p>
+        </div>
+
+        <section class="legal-section" id="responsable">
+            <h2><span class="legal-section__num">01</span> Identidad y Domicilio del Responsable</h2>
+            <p>El responsable del tratamiento de sus datos personales es la persona moral o fÃ­sica que opera bajo la marca comercial:</p>
+            <div class="legal-highlight">
+                <p style="margin-bottom:0.5rem;"><strong>DenominaciÃ³n comercial:</strong> Tacos de Canasta en MÃ©xico</p>
+                <p style="margin-bottom:0.5rem;"><strong>Actividad:</strong> Suministro de tacos de canasta, servicio de comida a domicilio, banquetes y catering para eventos particulares y corporativos.</p>
+                <p style="margin-bottom:0.5rem;"><strong>Ãrea de operaciÃ³n:</strong> Estado de MÃ©xico y zona metropolitana del Valle de MÃ©xico.</p>
+                <p style="margin-bottom:0;"><strong>Correo electrÃ³nico de contacto:</strong> <a href="mailto:info@tacoscanasta.com" class="legal-contact-link">info@tacoscanasta.com</a></p>
+            </div>
+            <p>Para cualquier asunto relacionado con el tratamiento de datos personales, incluida la atenciÃ³n de solicitudes de derechos ARCO, el medio oficial de contacto es el correo electrÃ³nico seÃ±alado anteriormente, identificando claramente el asunto de su solicitud.</p>
+        </section>
+
+        <section class="legal-section" id="datos">
+            <h2><span class="legal-section__num">02</span> Datos Personales que Recabamos</h2>
+            <p>Recabamos datos personales de manera directa cuando usted nos los proporciona voluntariamente a travÃ©s de nuestro sitio web, WhatsApp, correo electrÃ³nico, asistente de inteligencia artificial (cotizador IA), formularios de contacto o durante la coordinaciÃ³n de pedidos y eventos.</p>
+
+            <table class="legal-data-table">
+                <thead>
+                    <tr>
+                        <th>CategorÃ­a</th>
+                        <th>Datos recabados</th>
+                        <th>Medio de obtenciÃ³n</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>IdentificaciÃ³n y contacto</td>
+                        <td>Nombre completo o razÃ³n social, nÃºmero de telÃ©fono, correo electrÃ³nico</td>
+                        <td>WhatsApp, sitio web, cotizador IA, correo</td>
+                    </tr>
+                    <tr>
+                        <td>UbicaciÃ³n y logÃ­stica</td>
+                        <td>DirecciÃ³n de entrega, direcciÃ³n del evento, referencias de acceso, colonia, municipio, cÃ³digo postal</td>
+                        <td>WhatsApp, cotizador IA, coordinaciÃ³n telefÃ³nica</td>
+                    </tr>
+                    <tr>
+                        <td>Datos del evento o pedido</td>
+                        <td>Fecha, hora, nÃºmero de asistentes, tipo de evento, menÃº solicitado, instrucciones especiales</td>
+                        <td>Cotizador IA, WhatsApp, asesores comerciales</td>
+                    </tr>
+                    <tr>
+                        <td>Datos fiscales (opcional)</td>
+                        <td>RFC, razÃ³n social, domicilio fiscal, rÃ©gimen fiscal, uso de CFDI</td>
+                        <td>Solo cuando usted solicita factura</td>
+                    </tr>
+                    <tr>
+                        <td>Datos tÃ©cnicos</td>
+                        <td>DirecciÃ³n IP, tipo de navegador, cookies de sesiÃ³n y preferencias (ver secciÃ³n de cookies en nuestro sitio)</td>
+                        <td>NavegaciÃ³n automÃ¡tica en el sitio web</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>No recabamos de manera intencional datos personales sensibles (origen racial o Ã©tnico, estado de salud, creencias religiosas, opiniones polÃ­ticas, preferencia sexual, entre otros). En caso de que usted los proporcione voluntariamente en comunicaciones abiertas, serÃ¡n tratados con la debida confidencialidad y Ãºnicamente para la finalidad expresamente solicitada.</p>
+        </section>
+
+        <section class="legal-section" id="finalidades">
+            <h2><span class="legal-section__num">03</span> Finalidades del Tratamiento de Datos</h2>
+            <p>Sus datos personales serÃ¡n utilizados para las finalidades que a continuaciÃ³n se describen. Al proporcionarnos sus datos, usted consiente su tratamiento conforme a este Aviso de Privacidad.</p>
+
+            <p><strong>A) Finalidades primarias</strong> (necesarias para la relaciÃ³n comercial y prestaciÃ³n del servicio):</p>
+            <ul>
+                <li>Elaborar cotizaciones personalizadas para pedidos de comida, paquetes y banquetes.</li>
+                <li>Coordinar la logÃ­stica de entrega a domicilio y de montaje en eventos masivos o corporativos.</li>
+                <li>Procesar, confirmar y dar seguimiento a pedidos de tacos de canasta y servicios de catering.</li>
+                <li>Comunicarnos con usted por WhatsApp, telÃ©fono o correo electrÃ³nico respecto al estatus de su pedido o evento.</li>
+                <li>Emitir comprobantes fiscales (CFDI) cuando usted asÃ­ lo solicite.</li>
+                <li>Gestionar pagos, anticipos, facturaciÃ³n y conciliaciÃ³n de cuentas.</li>
+                <li>Atender quejas, aclaraciones y solicitudes de servicio al cliente.</li>
+            </ul>
+
+            <p><strong>B) Finalidades secundarias</strong> (no necesarias para la prestaciÃ³n del servicio, pero que nos permiten mejorar la experiencia):</p>
+            <ul>
+                <li>Enviar encuestas de satisfacciÃ³n y evaluaciones de calidad del servicio.</li>
+                <li>Realizar anÃ¡lisis estadÃ­sticos internos para mejorar nuestros productos, menÃºs y operaciÃ³n logÃ­stica.</li>
+                <li>Enviar promociones, ofertas especiales y comunicaciones comerciales propias de la marca (puede oponerse en cualquier momento).</li>
+            </ul>
+
+            <div class="legal-info-box">
+                <p style="margin:0;">Si usted <strong>no desea que sus datos se utilicen para finalidades secundarias</strong>, puede manifestarlo enviando un correo a <a href="mailto:info@tacoscanasta.com" class="legal-contact-link">info@tacoscanasta.com</a> con el asunto Â«OposiciÃ³n a finalidades secundariasÂ». Lo atenderemos en un plazo mÃ¡ximo de veinte (20) dÃ­as hÃ¡biles.</p>
+            </div>
+        </section>
+
+        <section class="legal-section" id="transferencia">
+            <h2><span class="legal-section__num">04</span> Transferencia de Datos Personales</h2>
+            <p>Le informamos que <strong>NO transferimos ni compartimos sus datos personales con terceros</strong>, nacionales o extranjeros, sin su consentimiento previo, expreso e informado, salvo en los casos expresamente permitidos por la LFPDPPP, tales como:</p>
+            <ul>
+                <li>Cuando la transferencia sea necesaria para cumplir con una obligaciÃ³n legal impuesta por autoridad competente.</li>
+                <li>Cuando la transferencia sea requerida por mandato judicial o resoluciÃ³n administrativa fundada y motivada.</li>
+            </ul>
+            <div class="legal-highlight">
+                <p style="margin:0;">En ningÃºn caso vendemos, alquilamos o comercializamos sus datos personales. Los proveedores tecnolÃ³gicos que procesan informaciÃ³n en nuestro nombre (por ejemplo, plataformas de mensajerÃ­a o herramientas de inteligencia artificial) actÃºan bajo instrucciones del Responsable y estÃ¡n obligados contractualmente a mantener la confidencialidad y seguridad de la informaciÃ³n.</p>
+            </div>
+        </section>
+
+        <section class="legal-section" id="arco">
+            <h2><span class="legal-section__num">05</span> Derechos ARCO y RevocaciÃ³n del Consentimiento</h2>
+            <p>Usted tiene derecho a conocer quÃ© datos personales tenemos de usted, para quÃ© los utilizamos y las condiciones del tratamiento (<strong>Acceso</strong>). Asimismo, puede solicitar la correcciÃ³n de su informaciÃ³n personal si estÃ¡ desactualizada, es inexacta o incompleta (<strong>RectificaciÃ³n</strong>); que la eliminemos de nuestros registros cuando considere que no estÃ¡n siendo utilizados conforme a los principios y deberes previstos en la ley (<strong>CancelaciÃ³n</strong>); asÃ­ como oponerse al tratamiento de sus datos para fines especÃ­ficos (<strong>OposiciÃ³n</strong>). Conjuntamente, estos derechos se conocen como derechos <strong>ARCO</strong>.</p>
+
+            <ul class="legal-arco-list">
+                <li><strong>Acceso</strong> Conocer quÃ© datos tenemos y cÃ³mo los usamos.</li>
+                <li><strong>RectificaciÃ³n</strong> Corregir datos inexactos o incompletos.</li>
+                <li><strong>CancelaciÃ³n</strong> Solicitar la eliminaciÃ³n de sus datos cuando proceda legalmente.</li>
+                <li><strong>OposiciÃ³n</strong> Oponerse al tratamiento para fines especÃ­ficos.</li>
+            </ul>
+
+            <p>Para ejercer cualquiera de los derechos ARCO, o para <strong>revocar su consentimiento</strong> al tratamiento de sus datos personales, deberÃ¡ enviar una solicitud al correo electrÃ³nico:</p>
+
+            <div class="legal-highlight" style="text-align:center;">
+                <a href="mailto:info@tacoscanasta.com?subject=Solicitud%20de%20Derechos%20ARCO" class="legal-contact-link" style="font-size:1.05rem;">info@tacoscanasta.com</a>
+            </div>
+
+            <p>Su solicitud deberÃ¡ contener, como mÃ­nimo:</p>
+            <ol>
+                <li>Nombre completo del titular y medio para comunicarle la respuesta (correo o telÃ©fono).</li>
+                <li>Documentos que acrediten su identidad o, en su caso, la representaciÃ³n legal del titular.</li>
+                <li>DescripciÃ³n clara y precisa de los datos personales respecto de los cuales desea ejercer algÃºn derecho ARCO.</li>
+                <li>Cualquier otro elemento que facilite la localizaciÃ³n de sus datos.</li>
+            </ol>
+
+            <p>El Responsable responderÃ¡ a su solicitud en un plazo mÃ¡ximo de <strong>veinte (20) dÃ­as hÃ¡biles</strong> contados a partir de su recepciÃ³n. De resultar procedente, la resoluciÃ³n se harÃ¡ efectiva dentro de los <strong>quince (15) dÃ­as hÃ¡biles</strong> siguientes a la fecha en que se comunique la respuesta. En caso de que su solicitud resulte procedente, la pondremos a su disposiciÃ³n en las instalaciones del Responsable o la enviaremos por correo electrÃ³nico, segÃºn su preferencia.</p>
+
+            <p>Si considera que su derecho a la protecciÃ³n de datos personales ha sido vulnerado, puede acudir al <strong>Instituto Nacional de Transparencia, Acceso a la InformaciÃ³n y ProtecciÃ³n de Datos Personales (INAI)</strong> a travÃ©s de su sitio web oficial: <a href="https://home.inai.org.mx" class="legal-contact-link" target="_blank" rel="noopener noreferrer">home.inai.org.mx</a>.</p>
+        </section>
+
+        <section class="legal-section" id="seguridad">
+            <h2><span class="legal-section__num">06</span> Medidas de Seguridad</h2>
+            <p>Implementamos medidas de seguridad administrativas, tÃ©cnicas y fÃ­sicas razonables para proteger sus datos personales contra daÃ±o, pÃ©rdida, alteraciÃ³n, destrucciÃ³n o uso, acceso o tratamiento no autorizados. Entre ellas se incluyen controles de acceso, comunicaciones cifradas en plataformas de mensajerÃ­a, contraseÃ±as seguras y capacitaciÃ³n bÃ¡sica al personal autorizado.</p>
+            <p>Sin embargo, ningÃºn sistema de transmisiÃ³n o almacenamiento electrÃ³nico es completamente infalible. Le recomendamos no compartir informaciÃ³n sensible por canales no seguros y verificar la identidad de nuestros representantes oficiales antes de proporcionar datos de pago.</p>
+        </section>
+
+        <section class="legal-section" id="cambios">
+            <h2><span class="legal-section__num">07</span> Cambios al Aviso de Privacidad</h2>
+            <p>El Responsable se reserva el derecho de modificar o actualizar el presente Aviso de Privacidad Integral en cualquier momento, para adaptarlo a cambios legislativos, jurisprudenciales, criterios del INAI o modificaciones en nuestras prÃ¡cticas de tratamiento de datos.</p>
+            <p>Cualquier modificaciÃ³n serÃ¡ publicada en esta misma direcciÃ³n URL dentro del sitio web oficial de <strong>Tacos de Canasta en MÃ©xico</strong>, indicando la fecha de Ãºltima actualizaciÃ³n al inicio del documento. Le recomendamos consultar periÃ³dicamente este aviso para mantenerse informado sobre cÃ³mo protegemos su informaciÃ³n.</p>
+            <p>En caso de cambios sustanciales que requieran nuevo consentimiento conforme a la ley, se lo notificaremos por los medios de contacto que nos haya proporcionado o mediante un aviso visible en nuestro sitio web.</p>
+        </section>
+
+        <section class="legal-section" id="consentimiento">
+            <h2><span class="legal-section__num">08</span> Consentimiento</h2>
+            <p>Al navegar en nuestro sitio web, utilizar nuestro cotizador de inteligencia artificial, contactarnos por WhatsApp, solicitar una cotizaciÃ³n, realizar un pedido o contratar nuestros servicios de banquetes y comida a domicilio, usted reconoce haber leÃ­do y comprendido el presente Aviso de Privacidad Integral y otorga su consentimiento para el tratamiento de sus datos personales conforme a las finalidades aquÃ­ descritas.</p>
+            <div class="legal-nav-links">
+                <a href="terminos.html">TÃ©rminos y Condiciones</a>
+                <a href="index.html">Inicio</a>
+                <a href="mailto:info@tacoscanasta.com">Contacto</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="legal-footer-note">
+        &copy; 2026 Tacos de Canasta en MÃ©xico &mdash; Aviso de Privacidad Integral &mdash; Ãšltima actualizaciÃ³n: Junio de 2026
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

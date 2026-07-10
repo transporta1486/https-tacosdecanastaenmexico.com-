@@ -1,0 +1,334 @@
+/* ======================================================= */
+/* ZONAS GLASS — Mapa de cobertura futurista / HUD neo    */
+/* (misma línea visual que paquetes-glass)                */
+/* ======================================================= */
+
+@property --shine-o {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: false;
+}
+
+.locations--neo {
+    position: relative;
+    padding:
+        clamp(3rem, 8vw, 5rem)
+        clamp(0.75rem, 4vw, 2rem) !important;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 200, 255, 0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 15% 100%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 85% 100%, rgba(120, 80, 255, 0.06) 0%, transparent 50%),
+        linear-gradient(180deg, #060810 0%, #0a0e16 50%, #080a10 100%) !important;
+    border-top: none !important;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Grid ambiental pulsante */
+.locations--neo::before {
+    content: "[ ZONE_MATRIX v2.1 // COBERTURA CDMX + EDO. MEX. ]";
+    display: block;
+    position: relative;
+    z-index: 2;
+    margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.4375rem, 2vw, 0.5625rem);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(0, 220, 255, 0.65);
+}
+
+.locations--neo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-image:
+        linear-gradient(rgba(0, 220, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 220, 255, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 90% 75% at 50% 45%, #000 15%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 45%, #000 15%, transparent 78%);
+    pointer-events: none;
+    z-index: 0;
+    animation: zonasNeoGridPulse 8s ease-in-out infinite;
+}
+
+@keyframes zonasNeoGridPulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.16; }
+}
+
+/* ── Panel mapa ── */
+.locations--neo .container {
+    position: relative;
+    z-index: 2;
+    max-width: 960px;
+    margin: 0 auto;
+    padding:
+        clamp(1.75rem, 5vw, 2.75rem)
+        clamp(1.25rem, 4vw, 2rem);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 220, 255, 0.06) 0%,
+            rgba(8, 12, 22, 0.55) 28%,
+            rgba(4, 6, 12, 0.62) 100%
+        );
+    backdrop-filter: blur(10px) saturate(170%);
+    -webkit-backdrop-filter: blur(10px) saturate(170%);
+    border: 1px solid rgba(0, 220, 255, 0.18);
+    border-top: 2px solid rgba(0, 240, 255, 0.32);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.42);
+    border-radius: 4px;
+    box-shadow:
+        inset 0 14px 28px rgba(0, 220, 255, 0.05),
+        inset 0 -16px 32px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(0, 220, 255, 0.06),
+        0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.locations--neo .container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 240, 255, 0.35) 0%,
+        rgba(0, 220, 255, 0.1) 55%,
+        transparent 100%
+    );
+    pointer-events: none;
+    border-radius: 4px 4px 0 0;
+}
+
+.locations--neo h2 {
+    position: relative;
+    z-index: 2;
+    margin-bottom: clamp(1.25rem, 4vw, 2rem) !important;
+    font-size: clamp(1.25rem, 4.5vw, 1.75rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.96) !important;
+    text-shadow: 0 0 24px rgba(0, 220, 255, 0.25);
+}
+
+.locations--neo h2::after {
+    content: "NODOS ACTIVOS DE ENTREGA";
+    display: block;
+    margin-top: 0.45rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.4375rem, 2vw, 0.5rem);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: rgba(0, 220, 255, 0.5);
+}
+
+/* ── Grid de zonas ── */
+.locations--neo .locations-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 168px), 1fr));
+    gap: clamp(0.5rem, 2vw, 0.75rem);
+    justify-content: center;
+}
+
+/* ── Nodo de zona — terminal link ── */
+.locations--neo .location-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.65rem 0.85rem;
+    font-size: clamp(0.75rem, 2.2vw, 0.875rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(210, 225, 240, 0.92) !important;
+    --shine-x: 50%;
+    --shine-y: 50%;
+    --shine-o: 0;
+    background-image:
+        radial-gradient(
+            circle 80px at var(--shine-x) var(--shine-y),
+            rgba(0, 220, 255, calc(var(--shine-o) * 0.1)) 0%,
+            transparent 70%
+        ),
+        linear-gradient(
+            165deg,
+            rgba(0, 220, 255, 0.08) 0%,
+            rgba(8, 12, 22, 0.65) 100%
+        );
+    background-color: transparent !important;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(0, 220, 255, 0.22) !important;
+    border-top: 2px solid rgba(0, 240, 255, 0.28) !important;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.35) !important;
+    border-radius: 4px;
+    box-shadow:
+        inset 0 6px 14px rgba(0, 220, 255, 0.05),
+        inset 0 -6px 14px rgba(0, 0, 0, 0.25),
+        0 4px 16px rgba(0, 0, 0, 0.28);
+    transition: --shine-o 0.35s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    overflow: hidden;
+}
+
+.locations--neo .location-link::before,
+.locations--neo .location-link::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.locations--neo .location-link::before {
+    top: 4px;
+    left: 4px;
+    border-top: 1px solid rgba(0, 240, 255, 0.5);
+    border-left: 1px solid rgba(0, 240, 255, 0.5);
+}
+
+.locations--neo .location-link::after {
+    bottom: 4px;
+    right: 4px;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+    border-right: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.locations--neo .location-link:hover,
+.locations--neo .location-link.hero-glass--touch {
+    transform: translateY(-1px);
+    color: rgba(255, 255, 255, 0.98) !important;
+    border-color: rgba(0, 240, 255, 0.28) !important;
+    box-shadow:
+        inset 0 8px 16px rgba(0, 220, 255, 0.06),
+        inset 0 -6px 14px rgba(0, 0, 0, 0.28),
+        0 0 24px rgba(0, 220, 255, calc(var(--shine-o) * 0.06 + 0.02)),
+        0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+/* Nodo principal / zona actual / ver todas */
+.locations--neo .location-link.fw-bold,
+.locations--neo .location-link.text-warning {
+    grid-column: 1 / -1;
+    max-width: 100%;
+    color: rgba(255, 230, 180, 0.98) !important;
+    background-image:
+        radial-gradient(
+            circle 120px at var(--shine-x) var(--shine-y),
+            rgba(255, 160, 80, calc(var(--shine-o) * 0.12)) 0%,
+            rgba(0, 220, 255, calc(var(--shine-o) * 0.03)) 45%,
+            transparent 70%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255, 140, 60, 0.18) 0%,
+            rgba(0, 220, 255, 0.06) 40%,
+            rgba(12, 10, 20, 0.72) 100%
+        ) !important;
+    border-color: rgba(255, 160, 80, 0.4) !important;
+    border-top-color: rgba(255, 200, 120, 0.5) !important;
+    box-shadow:
+        inset 0 8px 18px rgba(255, 180, 100, 0.08),
+        inset 0 -8px 18px rgba(0, 0, 0, 0.3),
+        0 0 28px rgba(255, 107, 53, 0.15),
+        0 6px 20px rgba(0, 0, 0, 0.32);
+    animation: zonasHubPulse 4s ease-in-out infinite;
+}
+
+@keyframes zonasHubPulse {
+    0%, 100% {
+        box-shadow:
+            inset 0 8px 18px rgba(255, 180, 100, 0.08),
+            inset 0 -8px 18px rgba(0, 0, 0, 0.3),
+            0 0 22px rgba(255, 107, 53, 0.12),
+            0 6px 20px rgba(0, 0, 0, 0.32);
+    }
+    50% {
+        box-shadow:
+            inset 0 8px 18px rgba(255, 180, 100, 0.1),
+            inset 0 -8px 18px rgba(0, 0, 0, 0.3),
+            0 0 36px rgba(255, 107, 53, 0.22),
+            0 8px 24px rgba(0, 0, 0, 0.36);
+    }
+}
+
+.locations--neo .location-link.fw-bold::before,
+.locations--neo .location-link.text-warning::before {
+    border-color: rgba(255, 180, 100, 0.55);
+}
+
+.locations--neo .location-link.fw-bold::after,
+.locations--neo .location-link.text-warning::after {
+    border-color: rgba(255, 140, 60, 0.4);
+}
+
+.locations--neo .location-link.fw-bold:hover,
+.locations--neo .location-link.text-warning:hover {
+    color: #fff !important;
+    background-color: transparent !important;
+}
+
+/* Override inline legacy red background */
+.locations--neo .location-link[style*="background"] {
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(255, 140, 60, 0.22) 0%,
+            rgba(192, 57, 43, 0.15) 50%,
+            rgba(8, 12, 22, 0.7) 100%
+        ) !important;
+    background-color: transparent !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+    .locations--neo {
+        padding: 2.5rem 0.65rem !important;
+    }
+
+    .locations--neo .container {
+        padding: 1.5rem 1rem;
+    }
+
+    .locations--neo .locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .locations--neo .container,
+    .locations--neo .location-link {
+        background: rgba(8, 12, 22, 0.94) !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .locations--neo::after,
+    .locations--neo .location-link.fw-bold,
+    .locations--neo .location-link.text-warning {
+        animation: none;
+    }
+
+    .locations--neo .location-link {
+        transition: none;
+    }
+
+    .locations--neo .location-link:hover {
+        transform: none;
+    }
+}

@@ -1,0 +1,25 @@
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Env / secrets
+.env
+.env.*
+*.pem
+credentials.json
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
+
+# Local Netlify folder
+.netlify

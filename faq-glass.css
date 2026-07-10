@@ -1,0 +1,193 @@
+/* ======================================================= */
+/* FAQ GLASS — Preguntas frecuentes · panel tecnológico    */
+/* ======================================================= */
+
+.preguntas-frecuentes--glass {
+    position: relative;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 920px;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.07) 0%,
+            rgba(12, 14, 18, 0.55) 22%,
+            rgba(8, 10, 14, 0.48) 100%
+        );
+    backdrop-filter: blur(10px) saturate(165%);
+    -webkit-backdrop-filter: blur(10px) saturate(165%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+        0 20px 56px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+}
+
+.preguntas-frecuentes--glass::before {
+    content: "[ FAQ_SYSTEM v2.0 // SOPORTE CORPORATIVO ]";
+    display: block;
+    margin-bottom: 0.65rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.4375rem, 2vw, 0.5625rem);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(255, 160, 80, 0.7);
+}
+
+.preguntas-frecuentes--glass h3 {
+    color: #fff;
+    text-align: center;
+    margin: 0 0 clamp(1.25rem, 3vw, 1.75rem);
+    font-size: clamp(1.125rem, 4vw, 1.45rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.preguntas-frecuentes--glass .faq-item {
+    position: relative;
+    margin-bottom: 0.85rem;
+    padding: 1rem 1.1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.preguntas-frecuentes--glass .faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.preguntas-frecuentes--glass .faq-item h4 {
+    color: rgba(255, 180, 100, 0.95);
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.9375rem, 3.2vw, 1.0625rem);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1.35;
+}
+
+.preguntas-frecuentes--glass .faq-item p {
+    color: rgba(225, 228, 235, 0.88);
+    line-height: 1.6;
+    margin: 0;
+    font-size: clamp(0.875rem, 2.8vw, 0.9375rem);
+}
+
+.preguntas-frecuentes--glass .faq-item p strong {
+    color: rgba(255, 236, 0, 0.95);
+}
+
+/* ── Destacado: ¿Cómo se entregan los tacos? ── */
+.preguntas-frecuentes--glass .faq-item--featured {
+    padding: 1.25rem 1.2rem 1.2rem;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 140, 40, 0.12) 0%,
+            rgba(12, 14, 18, 0.72) 45%,
+            rgba(8, 10, 14, 0.65) 100%
+        );
+    border: 1px solid rgba(255, 140, 40, 0.35);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        inset 0 0 28px rgba(255, 106, 0, 0.06),
+        0 0 24px rgba(255, 106, 0, 0.12),
+        0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.preguntas-frecuentes--glass .faq-item--featured::before {
+    content: "◆ LOGÍSTICA DE ENTREGA";
+    display: inline-block;
+    margin-bottom: 0.55rem;
+    padding: 0.28rem 0.55rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.4375rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: rgba(255, 200, 120, 0.95);
+    background: rgba(255, 106, 0, 0.15);
+    border: 1px solid rgba(255, 140, 40, 0.35);
+    border-radius: 4px;
+}
+
+.preguntas-frecuentes--glass .faq-item--featured::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 22px;
+    height: 22px;
+    border-top: 2px solid rgba(255, 140, 40, 0.65);
+    border-right: 2px solid rgba(255, 140, 40, 0.65);
+    pointer-events: none;
+}
+
+.preguntas-frecuentes--glass .faq-item--featured h4 {
+    color: #fff;
+    font-size: clamp(1rem, 3.5vw, 1.125rem);
+    text-shadow: 0 0 18px rgba(255, 140, 40, 0.25);
+}
+
+.preguntas-frecuentes--glass .faq-item--featured p {
+    color: rgba(240, 242, 248, 0.94);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .preguntas-frecuentes--glass .faq-item:hover {
+        border-color: rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .preguntas-frecuentes--glass .faq-item--featured:hover {
+        border-color: rgba(255, 160, 60, 0.5);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.18),
+            inset 0 0 32px rgba(255, 106, 0, 0.08),
+            0 0 32px rgba(255, 106, 0, 0.18),
+            0 14px 36px rgba(0, 0, 0, 0.4);
+    }
+}
+
+@media (max-width: 767px) {
+    .preguntas-frecuentes--glass {
+        margin-top: 2.5rem;
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+        padding: 1.25rem 1rem;
+        border-radius: 16px;
+    }
+
+    .preguntas-frecuentes--glass .faq-item {
+        padding: 0.9rem 0.95rem;
+    }
+
+    .preguntas-frecuentes--glass .faq-item--featured {
+        padding: 1.05rem 1rem;
+    }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .preguntas-frecuentes--glass {
+        background: rgba(14, 16, 20, 0.94);
+    }
+
+    .preguntas-frecuentes--glass .faq-item {
+        background: rgba(18, 20, 26, 0.92);
+    }
+
+    .preguntas-frecuentes--glass .faq-item--featured {
+        background: rgba(22, 18, 14, 0.95);
+    }
+}

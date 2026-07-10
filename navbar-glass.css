@@ -1,0 +1,344 @@
+/* ======================================================= */
+/* NAVBAR — Liquid Glassmorphism v2.0 (Global · Mobile-First) */
+/* ======================================================= */
+
+:root {
+    --nav-height: 52px;
+    --nav-glass-bg: rgba(10, 10, 10, 0.5);
+    --nav-glass-blur: 10px;
+    --nav-glass-border: rgba(255, 255, 255, 0.08);
+    --nav-amber: rgba(255, 140, 40, 0.95);
+    --nav-amber-glow: rgba(255, 69, 0, 0.35);
+}
+
+@media (min-width: 992px) {
+    :root {
+        --nav-height: 56px;
+    }
+}
+
+/* Compensa navbar fijo en todo el sitio */
+body {
+    padding-top: var(--nav-height) !important;
+}
+
+.site-header {
+    display: contents;
+}
+
+/* ── Barra principal fija ── */
+.nav-glass {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--nav-glass-bg);
+    backdrop-filter: blur(var(--nav-glass-blur));
+    -webkit-backdrop-filter: blur(var(--nav-glass-blur));
+    border-bottom: 1px solid var(--nav-glass-border);
+    box-shadow:
+        inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+        0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.nav-glass__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    min-height: var(--nav-height);
+    padding:
+        env(safe-area-inset-top, 0px)
+        max(1rem, env(safe-area-inset-right, 0px))
+        0
+        max(1rem, env(safe-area-inset-left, 0px));
+    box-sizing: content-box;
+}
+
+/* ── Marca ── */
+.nav-glass__brand {
+    flex: 1;
+    min-width: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.6875rem, 3.2vw, 0.9375rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-glass__brand:hover,
+.nav-glass__brand:focus-visible {
+    color: rgba(255, 255, 255, 0.92);
+    outline: none;
+}
+
+/* ── Toggle hamburguesa → X ── */
+.nav-glass__toggle {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nav-glass__toggle:hover,
+.nav-glass__toggle:focus-visible {
+    border-color: rgba(255, 140, 40, 0.35);
+    box-shadow: 0 0 12px var(--nav-amber-glow);
+    outline: none;
+}
+
+.nav-glass__toggle-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 20px;
+    height: 16px;
+}
+
+.nav-glass__line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    background: rgba(255, 255, 255, 0.92);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease;
+    transform-origin: center;
+}
+
+.nav-glass__toggle--active .nav-glass__line--1 {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-glass__toggle--active .nav-glass__line--2 {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-glass__toggle--active .nav-glass__line--3 {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-glass__toggle--active {
+    border-color: rgba(255, 140, 40, 0.45);
+    background: rgba(255, 69, 0, 0.08);
+}
+
+/* ── Panel de enlaces ── */
+.nav-glass__panel {
+    list-style: none;
+}
+
+.nav-glass__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-glass__link {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0.65rem 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(240, 240, 245, 0.92);
+    border-radius: 10px;
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.nav-glass__link:hover,
+.nav-glass__link:focus-visible {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+    outline: none;
+}
+
+.nav-glass__link--active,
+.nav-glass__link:active {
+    color: var(--nav-amber);
+    background: rgba(255, 69, 0, 0.1);
+    box-shadow:
+        inset 3px 0 0 var(--nav-amber),
+        0 0 14px var(--nav-amber-glow);
+}
+
+.nav-glass__stamp {
+    margin: 0;
+    padding: 0.75rem 1rem 1rem;
+    font-family: 'Courier New', Courier, 'Lucida Console', monospace;
+    font-size: 0.4375rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: right;
+    color: rgba(130, 140, 150, 0.65);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ── Mobile: panel flotante de cristal ── */
+@media (max-width: 991px) {
+    .nav-glass__toggle {
+        display: flex;
+    }
+
+    .nav-glass__panel {
+        position: fixed;
+        top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+        left: 0.75rem;
+        right: 0.75rem;
+        max-height: calc(100dvh - var(--nav-height) - env(safe-area-inset-top, 0px) - 1rem);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background: rgba(12, 12, 14, 0.82);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        box-shadow:
+            inset 0 0 20px rgba(255, 255, 255, 0.03),
+            0 20px 48px rgba(0, 0, 0, 0.55);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px) scale(0.98);
+        transform-origin: top center;
+        transition:
+            opacity 0.32s ease,
+            visibility 0.32s ease,
+            transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events: none;
+        z-index: 999;
+    }
+
+    .nav-glass__panel--open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+
+    .nav-glass__menu {
+        padding: 0.65rem 0.5rem;
+    }
+
+    .nav-glass__menu li + li {
+        margin-top: 0.25rem;
+    }
+
+    .nav-glass--menu-open::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 998;
+        animation: navOverlayIn 0.3s ease;
+        pointer-events: auto;
+    }
+}
+
+@keyframes navOverlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ── Desktop: enlaces en barra ── */
+@media (min-width: 992px) {
+    .nav-glass__bar {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .nav-glass__toggle {
+        display: none;
+    }
+
+    .nav-glass__panel {
+        position: static;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        pointer-events: auto;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .nav-glass__menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.15rem;
+        padding: 0;
+    }
+
+    .nav-glass__link {
+        min-height: 40px;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.8125rem;
+        border-radius: 8px;
+    }
+
+    .nav-glass__link--active {
+        box-shadow: inset 0 -2px 0 var(--nav-amber), 0 0 10px var(--nav-amber-glow);
+    }
+
+    .nav-glass__stamp {
+        display: none;
+    }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .nav-glass {
+        background: rgba(12, 12, 14, 0.97);
+    }
+
+    @media (max-width: 991px) {
+        .nav-glass__panel {
+            background: rgba(14, 14, 16, 0.98);
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-glass__panel,
+    .nav-glass__line {
+        transition: none;
+    }
+}

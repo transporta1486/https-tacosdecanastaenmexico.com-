@@ -1,0 +1,249 @@
+/* ======================================================= */
+/* GLASS CLEAR — Cristal limpio y transparente (global)    */
+/* Carga al final · corrige efecto empañado / opaco        */
+/* ======================================================= */
+
+:root {
+    --glass-blur-panel: 4px;
+    --glass-blur-card: 2px;
+    --glass-saturate: 118%;
+    --glass-top: rgba(255, 255, 255, 0.08);
+    --glass-mid: rgba(255, 255, 255, 0.025);
+    --glass-deep: rgba(6, 8, 12, 0.14);
+    --glass-border-hi: rgba(255, 255, 255, 0.24);
+    --glass-border-lo: rgba(0, 0, 0, 0.16);
+}
+
+/* ── Paneles principales ── */
+.menu-vitrine .container,
+.preguntas-frecuentes--glass,
+.locations--neo .container,
+section.hero:not(.hero-premium) > .container {
+    background-image: linear-gradient(
+        180deg,
+        var(--glass-top) 0%,
+        var(--glass-mid) 10%,
+        var(--glass-deep) 100%
+    ) !important;
+    background-color: transparent !important;
+    backdrop-filter: blur(var(--glass-blur-panel)) saturate(var(--glass-saturate)) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur-panel)) saturate(var(--glass-saturate)) !important;
+}
+
+.hero-premium__band {
+    background-image:
+        radial-gradient(
+            circle 160px at var(--shine-x) var(--shine-y),
+            rgba(255, 255, 255, calc(var(--shine-o) * 0.14)) 0%,
+            rgba(255, 210, 140, calc(var(--shine-o) * 0.05)) 28%,
+            transparent 58%
+        ),
+        linear-gradient(
+            180deg,
+            var(--glass-top) 0%,
+            var(--glass-mid) 10%,
+            var(--glass-deep) 100%
+        ) !important;
+    background-color: transparent !important;
+    backdrop-filter: blur(var(--glass-blur-panel)) saturate(var(--glass-saturate)) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur-panel)) saturate(var(--glass-saturate)) !important;
+}
+
+.referencias-corporativas--apex .container-empresas,
+.seccion-dark--corp > .container-empresas {
+    background-image:
+        radial-gradient(
+            circle 220px at var(--shine-x) var(--shine-y),
+            rgba(255, 255, 255, calc(var(--shine-o) * 0.1)) 0%,
+            transparent 65%
+        ),
+        linear-gradient(
+            180deg,
+            var(--glass-top) 0%,
+            var(--glass-mid) 10%,
+            var(--glass-deep) 100%
+        ) !important;
+    background-color: transparent !important;
+    backdrop-filter: blur(var(--glass-blur-panel)) saturate(var(--glass-saturate)) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur-panel)) saturate(var(--glass-saturate)) !important;
+}
+
+/* ── Tarjetas y celdas ── */
+.menu-vitrine .menu-card,
+.referencias-corporativas--apex .marca-card,
+.referencias-corporativas--apex .testimonio,
+.referencias-corporativas--apex .banner-factura,
+.seccion-dark--corp .card-beneficio,
+.seccion-dark--corp .caja-accion-dark,
+.seccion-dark--corp .banner-mundialista,
+.tabla-paquetes--neo .paquete-card,
+.locations--neo .location-link,
+.preguntas-frecuentes--glass .faq-item {
+    background-image: linear-gradient(
+        165deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.015) 20%,
+        rgba(6, 8, 12, 0.12) 100%
+    ) !important;
+    background-color: transparent !important;
+    backdrop-filter: blur(var(--glass-blur-card)) saturate(var(--glass-saturate)) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur-card)) saturate(var(--glass-saturate)) !important;
+}
+
+.tabla-paquetes--neo .paquete-card {
+    background-image:
+        radial-gradient(
+            circle 180px at var(--shine-x) var(--shine-y),
+            rgba(0, 220, 255, calc(var(--shine-o) * 0.08)) 0%,
+            transparent 65%
+        ),
+        linear-gradient(
+            165deg,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0.015) 20%,
+            rgba(6, 8, 12, 0.12) 100%
+        ) !important;
+}
+
+.locations--neo .location-link {
+    background-image:
+        radial-gradient(
+            circle 80px at var(--shine-x) var(--shine-y),
+            rgba(0, 220, 255, calc(var(--shine-o) * 0.06)) 0%,
+            transparent 70%
+        ),
+        linear-gradient(
+            165deg,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0.015) 20%,
+            rgba(6, 8, 12, 0.12) 100%
+        ) !important;
+}
+
+/* ── Navbar y footer ── */
+.nav-glass,
+.nav-glass__panel {
+    background: rgba(8, 10, 14, 0.28) !important;
+    backdrop-filter: blur(6px) saturate(var(--glass-saturate)) !important;
+    -webkit-backdrop-filter: blur(6px) saturate(var(--glass-saturate)) !important;
+}
+
+.footer-glass {
+    background: rgba(8, 10, 14, 0.22) !important;
+    backdrop-filter: blur(6px) saturate(var(--glass-saturate)) !important;
+    -webkit-backdrop-filter: blur(6px) saturate(var(--glass-saturate)) !important;
+}
+
+.footer-glass__block,
+.footer-glass__wa-btn,
+.footer-glass__link-chip {
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+}
+
+/* ── Canastatron ── */
+.canasta-ai-sphere {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* ── Biseles superiores más sutiles (menos leche) ── */
+.menu-vitrine .container::before,
+.referencias-corporativas--apex .container-empresas::before,
+.seccion-dark--corp > .container-empresas::before,
+.locations--neo .container::before {
+    opacity: 0.55;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.28) 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        transparent 100%
+    ) !important;
+}
+
+/* ── Sombras internas más ligeras ── */
+.menu-vitrine .container,
+.referencias-corporativas--apex .container-empresas,
+.seccion-dark--corp > .container-empresas,
+.preguntas-frecuentes--glass,
+.tabla-paquetes--neo .paquete-card,
+.locations--neo .container {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+        0 12px 40px rgba(0, 0, 0, 0.28) !important;
+}
+
+.menu-vitrine .menu-card,
+.referencias-corporativas--apex .marca-card,
+.referencias-corporativas--apex .testimonio,
+.seccion-dark--corp .card-beneficio,
+.tabla-paquetes--neo .paquete-card,
+.locations--neo .location-link {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+        0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ── Bordes finos tipo cristal pulido ── */
+.menu-vitrine .container,
+.referencias-corporativas--apex .container-empresas,
+.seccion-dark--corp > .container-empresas,
+.preguntas-frecuentes--glass,
+.locations--neo .container {
+    border-top-color: var(--glass-border-hi) !important;
+    border-bottom-color: var(--glass-border-lo) !important;
+    border-left-color: rgba(255, 255, 255, 0.1) !important;
+    border-right-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.menu-vitrine .menu-card,
+.tabla-paquetes--neo .paquete-card,
+.locations--neo .location-link,
+.preguntas-frecuentes--glass .faq-item {
+    border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+/* Paquetes / zonas neo — fondo de sección sin velo pesado */
+.tabla-paquetes--neo,
+.locations--neo {
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 200, 255, 0.04) 0%, transparent 55%),
+        linear-gradient(180deg, #060810 0%, #0a0e16 50%, #080a10 100%) !important;
+}
+
+.tabla-paquetes--neo::after,
+.locations--neo::after {
+    opacity: 0.06 !important;
+}
+
+/* Botones sólidos conservan color — solo paneles de cristal */
+.seccion-dark--corp .btn-naranja,
+.tabla-paquetes--neo .btn-paquete,
+.referencias-corporativas--apex .banner-factura {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.referencias-corporativas--apex .banner-factura {
+    background-image: linear-gradient(
+        135deg,
+        rgba(255, 180, 80, 0.22) 0%,
+        rgba(255, 107, 53, 0.16) 50%,
+        rgba(255, 200, 100, 0.12) 100%
+    ) !important;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .menu-vitrine .container,
+    .referencias-corporativas--apex .container-empresas,
+    .seccion-dark--corp > .container-empresas,
+    .preguntas-frecuentes--glass,
+    .tabla-paquetes--neo .paquete-card,
+    .locations--neo .container,
+    .nav-glass,
+    .footer-glass {
+        background: rgba(8, 10, 14, 0.55) !important;
+    }
+}

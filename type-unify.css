@@ -1,0 +1,243 @@
+/* ======================================================= */
+/* TYPE UNIFY — Tipografía unificada · Poppins sitio-wide  */
+/* ======================================================= */
+
+:root {
+    --font-base: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --text-primary: rgba(240, 242, 248, 0.96);
+    --text-secondary: rgba(200, 208, 220, 0.9);
+    --text-muted: rgba(175, 185, 200, 0.82);
+    --text-accent: rgba(255, 186, 120, 0.95);
+    --text-accent-bright: rgba(255, 236, 120, 0.95);
+    --text-on-accent: rgba(255, 255, 255, 0.98);
+    --weight-body: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-heavy: 800;
+    --line-body: 1.65;
+    --line-heading: 1.28;
+    --track-body: 0.01em;
+    --track-heading: 0.04em;
+    --track-label: 0.1em;
+    --track-stamp: 0.14em;
+}
+
+html {
+    font-family: var(--font-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: var(--font-base);
+    font-weight: var(--weight-body);
+    font-size: clamp(0.9375rem, 2.5vw, 1rem);
+    line-height: var(--line-body);
+    letter-spacing: var(--track-body);
+    color: var(--text-primary);
+}
+
+/* ── Encabezados ── */
+h1, h2, h3, h4, h5, h6,
+.display-3, .display-5,
+.titulo-empresa,
+.titulo-naranja,
+.hero-premium__title,
+.preguntas-frecuentes--glass h3,
+.menu-vitrine h2,
+.referencias-corporativas--apex h2,
+.locations--neo h2,
+.paquete-card h3,
+.card-beneficio h3,
+.card-title,
+.info-texto h4,
+.banner-mundialista__titulo,
+.precio {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-bold);
+    line-height: var(--line-heading);
+    letter-spacing: var(--track-heading);
+    color: var(--text-primary);
+}
+
+h1, .display-3, .hero-premium__title {
+    font-weight: var(--weight-heavy);
+}
+
+/* ── Cuerpo y párrafos ── */
+p, li, span, label,
+.subtitulo-empresa, .subtitulo-blanco,
+.card-text, .card-beneficio p,
+.faq-item p, .testimonio p,
+.banner-mundialista__texto,
+.banner-factura p, .info-texto p,
+.hero-premium__subtitle,
+.lead {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-body);
+    line-height: var(--line-body);
+    letter-spacing: var(--track-body);
+    color: var(--text-secondary);
+}
+
+/* ── Acentos (títulos de tarjeta, FAQ, tags) ── */
+.card-title,
+.card-beneficio h3,
+.faq-item h4,
+.tag-naranja,
+.menu-vitrine .menu-card .card-title,
+.referencias-corporativas--apex .testimonio span,
+.paquete-card .card-title {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-semibold);
+    color: var(--text-accent) !important;
+}
+
+/* ── Sellos HUD / labels técnicos → misma fuente, estilo etiqueta ── */
+.preguntas-frecuentes--glass::before,
+.tabla-paquetes--neo::before,
+.locations--neo::before,
+.hero-premium__hud-stamp,
+.nav-glass__stamp,
+.footer-glass__title,
+.footer-dash__bot-status,
+.faq-item--featured::before,
+.paquete-card h3::after,
+.locations--neo h2::after,
+.empresas-glass .card-beneficio::before,
+.seccion-dark--corp .card-beneficio::before,
+.navbar-glass .nav-glass__hud,
+.footer-glass .footer-glass__hud,
+[class*="__hud"],
+[class*="__stamp"] {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--track-stamp);
+}
+
+/* Selectores con Courier en módulos glass */
+.preguntas-frecuentes--glass::before,
+.faq-glass .faq-item--featured::after,
+.tabla-paquetes--neo::before,
+.tabla-paquetes--neo .paquete-card h3::after,
+.tabla-paquetes--neo .recomendado,
+.tabla-paquetes--neo .precio,
+.tabla-paquetes--neo .precio span,
+.locations--neo::before,
+.locations--neo h2::after,
+.empresas-glass .card-beneficio::before,
+.seccion-dark--corp .card-beneficio::before,
+.hero-premium__hud-stamp,
+.nav-glass__stamp,
+.footer-glass__title,
+.footer-glass__legal,
+.footer-dash__bot-status,
+.canasta-ai-sphere__label {
+    font-family: var(--font-base) !important;
+}
+
+/* ── Precios ── */
+.precio,
+.tabla-paquetes--neo .precio {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-heavy);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+}
+
+.precio span,
+.tabla-paquetes--neo .precio span {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-semibold);
+    font-size: 0.35em;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-muted) !important;
+}
+
+/* ── Enlaces de zona y botones ── */
+.location-link,
+.btn-naranja, .btn-paquete, .btn-paquete,
+.btn-success, .btn-warning, .btn-paquete,
+.hero-premium__cta,
+.nav-glass__link,
+.footer-glass__wa-btn,
+.footer-glass__link-chip,
+.marca-card {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--track-label);
+}
+
+.location-link {
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--track-body);
+}
+
+/* ── Comillas testimonio ── */
+.referencias-corporativas--apex .testimonio::before {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-heavy);
+}
+
+/* ── Secciones legacy ── */
+.seccion-dark,
+.seccion-dark--corp,
+.nombre-empresa {
+    font-family: var(--font-base) !important;
+}
+
+.nombre-empresa {
+    font-weight: var(--weight-heavy);
+    letter-spacing: var(--track-label);
+}
+
+/* ── Títulos con gradiente conservan fuente unificada ── */
+.referencias-corporativas--apex .titulo-naranja,
+.seccion-dark--corp .titulo-empresa {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-heavy);
+}
+
+/* ── Nav y footer cuerpo ── */
+.nav-glass__brand,
+.nav-glass__link,
+.footer-glass__list a,
+.footer-glass__email-link,
+.footer-glass__social a {
+    font-family: var(--font-base) !important;
+}
+
+/* ── Canastatron ── */
+.canasta-ai-sphere__msg,
+.canasta-ai-sphere__hint {
+    font-family: var(--font-base) !important;
+    font-weight: var(--weight-medium);
+    line-height: var(--line-body);
+}
+
+/* ── Iconos Font Awesome (no tocar) ── */
+.fas, .far, .fab, .fal, .fad, .fa,
+[class^="fa-"], [class*=" fa-"] {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+    font-style: normal;
+    font-weight: 900;
+}
+
+.fab, .fa-brands {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400;
+}
+
+/* ── Legibilidad móvil ── */
+@media (max-width: 767px) {
+    body {
+        font-size: 0.9375rem;
+    }
+
+    h1, h2, .display-5, .titulo-empresa, .hero-premium__title {
+        letter-spacing: var(--track-heading);
+    }
+}

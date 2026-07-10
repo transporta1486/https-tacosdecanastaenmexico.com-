@@ -1,0 +1,13 @@
+{
+  "name": "tacosdecanastaenmexico",
+  "private": true,
+  "scripts": {
+    "deploy": "netlify deploy --prod --no-build --dir .",
+    "deploy:preview": "netlify deploy --no-build --dir .",
+    "netlify:link": "netlify link --name tacosdecanastaenmexico",
+    "netlify:status": "netlify status"
+  },
+  "devDependencies": {
+    "netlify-cli": "^26.2.0"
+  }
+}
