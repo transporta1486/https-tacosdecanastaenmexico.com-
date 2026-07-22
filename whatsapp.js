@@ -67,7 +67,7 @@
 
 ${orderLine(people, qty, 'chicharrón')}
 📍 Colonia/zona: ${z}
-⏰ Horario deseado: por confirmar
+⏰ Fecha de entrega (mín. 1 día de anticipación): por confirmar
 
 ¿Me confirman total y entrega? Gracias.`;
 
@@ -76,7 +76,7 @@ ${orderLine(people, qty, 'chicharrón')}
 
 ${orderLine(people, qty, 'frijol')}
 📍 Colonia/zona: ${z}
-⏰ Horario deseado: por confirmar
+⏰ Fecha de entrega (mín. 1 día de anticipación): por confirmar
 
 ¿Me confirman total y entrega? Gracias.`;
 
@@ -85,7 +85,7 @@ ${orderLine(people, qty, 'frijol')}
 
 ${orderLine(people, qty, 'papa')}
 📍 Colonia/zona: ${z}
-⏰ Horario deseado: por confirmar
+⏰ Fecha de entrega (mín. 1 día de anticipación): por confirmar
 
 ¿Me confirman total y entrega? Gracias.`;
 
@@ -94,7 +94,7 @@ ${orderLine(people, qty, 'papa')}
 
 ${orderLine(people, qty, 'mole rojo')}
 📍 Colonia/zona: ${z}
-⏰ Horario deseado: por confirmar
+⏰ Fecha de entrega (mín. 1 día de anticipación): por confirmar
 
 ¿Me confirman total y entrega? Gracias.`;
 
@@ -103,7 +103,7 @@ ${orderLine(people, qty, 'mole rojo')}
 
 👥 Personas: ${people} (mín. 20)
 📍 Ubicación: ${z}
-📅 Fecha y hora del evento: por confirmar
+📅 Fecha y hora del evento (mín. 1 día de anticipación): por confirmar
 
 ¿Me envían cotización formal? Gracias.`;
 
@@ -112,7 +112,7 @@ ${orderLine(people, qty, 'mole rojo')}
 
 👥 Personas: ${people} (mín. 20)
 📍 Ubicación: ${z}
-📅 Fecha y hora del evento: por confirmar
+📅 Fecha y hora del evento (mín. 1 día de anticipación): por confirmar
 
 ¿Me envían cotización con montaje incluido? Gracias.`;
 
@@ -122,7 +122,7 @@ ${orderLine(people, qty, 'mole rojo')}
 🏢 Empresa: por confirmar
 👥 Asistentes estimados: ${people} personas (mín. 20)
 📍 Dirección de entrega: ${z}
-📅 Fecha y hora: por confirmar
+📅 Fecha y hora (mín. 1 día de anticipación): por confirmar
 
 Requiero factura CFDI. ¿Me apoyan con propuesta?`;
 
@@ -131,7 +131,7 @@ Requiero factura CFDI. ¿Me apoyan con propuesta?`;
 
 👥 Personas: ${people} (${qty} tacos aprox.)
 📍 Ubicación: ${z}
-📅 Fecha y hora: por confirmar
+📅 Fecha y hora (mín. 1 día de anticipación): por confirmar
 
 ¿Me comparten opciones y precio? Gracias.`;
 
@@ -140,7 +140,7 @@ Requiero factura CFDI. ¿Me apoyan con propuesta?`;
 
 ${orderLine(people, qty, flavor)}
 📍 Colonia/zona: ${z}
-⏰ Horario deseado: por confirmar
+⏰ Fecha de entrega (mín. 1 día de anticipación): por confirmar
 
 ¿Tienen cobertura y cuál sería el total?`;
 
@@ -150,7 +150,7 @@ ${orderLine(people, qty, flavor)}
 
 ${orderLine(people, qty, flavor)}
 📍 Colonia/zona: ${z}
-⏰ Horario deseado: por confirmar
+⏰ Fecha de entrega (mín. 1 día de anticipación): por confirmar
 
 ¿Me confirman disponibilidad y total? Gracias.`;
         }
