@@ -101,178 +101,51 @@
     white-space: normal;
 }
 
-/* ── Intro al cargar: esfera grande + mensaje centrado ── */
+/* Intro centrada / overlay desactivados: el sitio queda visible e interactivo.
+   Clases legacy (--intro) se neutralizan por si quedara alguna en markup. */
 body.canastatron-intro-active::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 100001;
-    background: rgba(0, 0, 0, 0.62);
-    pointer-events: none;
-    animation: canastatronBackdropIn 0.45s ease forwards;
+    content: none !important;
+    display: none !important;
 }
 
-.floating-contact-cluster.floating-contact-cluster--intro {
-    top: 50% !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: translate3d(-50%, -50%, 0) !important;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    max-width: none;
-    z-index: 100002;
-    transition: none !important;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+.floating-contact-cluster.floating-contact-cluster--intro,
+.floating-contact-cluster--intro-dock {
+    top: auto !important;
+    left: auto !important;
+    right: max(14px, env(safe-area-inset-right, 0px)) !important;
+    bottom: max(24px, env(safe-area-inset-bottom, 0px)) !important;
+    transform: none !important;
+    z-index: 1050 !important;
 }
 
 .floating-contact-cluster--intro .floating-btns {
-    opacity: 0;
-    visibility: hidden;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    margin: 0;
-    pointer-events: none;
-}
-
-.canasta-ai-float--intro {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: min(92vw, 400px);
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    height: auto;
+    overflow: visible;
     pointer-events: auto;
 }
 
-.canasta-ai-float--intro .canasta-ai-float__bubble {
-    order: -1;
-    margin: 0 0 1.35rem;
-    max-width: min(340px, 88vw) !important;
-    max-height: 320px !important;
-    padding: 1rem 1.15rem !important;
-    font-size: clamp(0.9375rem, 3.8vw, 1.125rem);
-    line-height: 1.45;
-    text-align: center;
-    border-radius: 18px;
-    transform: translate3d(0, 0, 0) scale(1);
-    background: rgba(14, 16, 22, 0.94);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    -webkit-font-smoothing: antialiased;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.16),
-        0 16px 48px rgba(0, 0, 0, 0.5),
-        0 0 32px rgba(255, 140, 40, 0.15);
+.canasta-ai-float--intro,
+.canasta-ai-float--intro-out {
+    flex-direction: row;
+    max-width: min(340px, calc(100vw - 28px));
 }
 
-.canasta-ai-float--intro .canasta-ai-float__bubble::before {
-    display: none;
-}
-
-.canasta-ai-float--intro .canasta-ai-float__bubble::after {
-    left: 50%;
-    right: auto;
-    top: 100%;
-    transform: translateX(-50%);
-    border-top: 7px solid rgba(255, 255, 255, 0.14);
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: none;
-}
-
-.canasta-ai-float--intro .canasta-ai-sphere {
-    width: clamp(108px, 30vw, 140px);
-    height: clamp(108px, 30vw, 140px);
-    --sphere-shine-o: 0.62;
-    animation: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    box-shadow:
-        inset -8px -12px 22px rgba(0, 0, 0, 0.48),
-        inset 6px 10px 18px rgba(255, 255, 255, 0.16),
-        0 0 0 2px rgba(255, 255, 255, 0.1),
-        0 20px 56px rgba(0, 0, 0, 0.55),
-        0 0 48px rgba(255, 140, 40, 0.35);
-}
-
-.canasta-ai-float--intro .canasta-ai-sphere__robot {
-    width: clamp(76px, 22vw, 98px);
-    height: clamp(76px, 22vw, 98px);
-    image-rendering: -webkit-optimize-contrast;
-    transform: translate3d(-50%, -50%, 0);
-}
-
+.canasta-ai-float--intro .canasta-ai-float__bubble,
 .canasta-ai-float--intro-out .canasta-ai-float__bubble {
     opacity: 0 !important;
     visibility: hidden !important;
+    max-width: 0 !important;
     max-height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
-    transition: opacity 0.45s ease, visibility 0.45s ease, max-height 0.45s ease, margin 0.45s ease, padding 0.45s ease;
 }
 
-.floating-contact-cluster--intro-dock {
-    transition: none !important;
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-.floating-contact-cluster--intro-dock .canasta-ai-sphere {
-    transition: width 0.55s ease 0.75s, height 0.55s ease 0.75s, box-shadow 0.55s ease 0.75s;
-}
-
-@keyframes canastatronBackdropIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@media (max-width: 767px) {
-    body.canastatron-intro-active::after {
-        background: rgba(0, 0, 0, 0.78);
-    }
-
-    .canasta-ai-float--intro .canasta-ai-float__bubble {
-        font-size: 0.875rem;
-        padding: 0.9rem 1rem !important;
-        margin-bottom: 1.1rem;
-        background: rgba(12, 14, 20, 0.97);
-    }
-
-    .canasta-ai-float--intro .canasta-ai-sphere {
-        background-image:
-            radial-gradient(
-                circle at var(--sphere-shine-x) var(--sphere-shine-y),
-                rgba(255, 255, 255, calc(var(--sphere-shine-o) * 0.2)) 0%,
-                rgba(255, 200, 120, calc(var(--sphere-shine-o) * 0.08)) 18%,
-                transparent 42%
-            ),
-            radial-gradient(
-                circle at 38% 32%,
-                rgba(255, 255, 255, 0.22) 0%,
-                rgba(18, 20, 28, 0.88) 55%,
-                rgba(6, 8, 12, 0.96) 100%
-            );
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    body.canastatron-intro-active::after {
-        display: none;
-    }
-
-    .floating-contact-cluster.floating-contact-cluster--intro {
-        top: auto !important;
-        left: auto !important;
-        right: max(14px, env(safe-area-inset-right, 0px)) !important;
-        bottom: max(24px, env(safe-area-inset-bottom, 0px)) !important;
-        transform: none !important;
-    }
+.canasta-ai-float--intro .canasta-ai-sphere {
+    width: 76px;
+    height: 76px;
 }
 
 /* ── Esfera glass 3D ── */
@@ -448,4 +321,40 @@ div[id="chatbase-bubble-button"] {
     visibility: hidden !important;
     pointer-events: none !important;
     opacity: 0 !important;
+}
+
+/* Ventana Chatbase: responsive móvil + botón cerrar limpio */
+#chatbase-bubble-window,
+div[id="chatbase-bubble-window"] {
+    max-width: min(100vw - 16px, 420px) !important;
+    max-height: min(85dvh, 720px) !important;
+    z-index: 2147483000 !important;
+}
+
+#chatbase-bubble-window iframe,
+div[id="chatbase-bubble-window"] iframe {
+    max-width: 100% !important;
+    border: 0 !important;
+}
+
+@media (max-width: 767px) {
+    #chatbase-bubble-window,
+    div[id="chatbase-bubble-window"] {
+        right: 8px !important;
+        left: auto !important;
+        bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+        width: calc(100vw - 16px) !important;
+        max-width: calc(100vw - 16px) !important;
+        height: min(72dvh, 640px) !important;
+        max-height: min(72dvh, 640px) !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28) !important;
+    }
+
+    /* Evita líneas/artefactos sobre el botón X del header del widget */
+    #chatbase-bubble-window *,
+    div[id="chatbase-bubble-window"] * {
+        box-sizing: border-box;
+    }
 }

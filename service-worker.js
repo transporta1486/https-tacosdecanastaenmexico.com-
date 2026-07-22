@@ -1,5 +1,5 @@
 // Nombre del caché. Incrementa este número cada vez que modifiques archivos CRÍTICOS (HTML, CSS, JS)
-const CACHE_NAME = 'tacos-canasta-cache-v65';
+const CACHE_NAME = 'tacos-canasta-cache-v66';
 
 // Lista de archivos para precachear (CRÍTICO: Incluye todos los HTML, CSS, JS y recursos principales)
 const urlsToCache = [

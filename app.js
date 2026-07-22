@@ -8,6 +8,11 @@
  */
 let deferredPrompt;
 
+/* Chatbase: sin pop-ups flotantes; el chat arranca minimizado. */
+window.chatbaseConfig = Object.assign({}, window.chatbaseConfig || {}, {
+    showFloatingInitialMessages: false
+});
+
 const PWA_DISMISS_KEY = 'pwa_install_dismissed';
 const PWA_DISMISS_DAYS = 14;
 
@@ -215,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ======================================================= */
     /* 4. Canastatron (robot / globo) → abre widget Chatbase */
     /* ======================================================= */
+    let userOpenedChatbase = false;
     const canastaAILauncher = document.getElementById('canasta-ai-launcher');
     if (canastaAILauncher) {
         const canastaSphere = canastaAILauncher.querySelector('.canasta-ai-sphere');
@@ -306,6 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const openChatbaseWidget = () => {
+            userOpenedChatbase = true;
             try {
                 if (window.chatbase && typeof window.chatbase.open === 'function') {
                     window.chatbase.open();
@@ -315,6 +322,10 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (_) {
                 /* embed aún cargando */
             }
+            window.setTimeout(() => {
+                scrubChatbasePlaceholderText(document.body);
+                scrubChatbaseIframes();
+            }, 400);
         };
 
         canastaAILauncher.addEventListener('click', (e) => {
@@ -340,64 +351,140 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ======================================================= */
-    /* 5. Intro → Canastatron saluda y recibe al usuario */
+    /* 4b. Chatbase: cerrado por defecto + texto limpio         */
+    /* ======================================================= */
+    const closeChatbaseWidget = () => {
+        try {
+            if (window.chatbase && typeof window.chatbase.close === 'function') {
+                window.chatbase.close();
+            } else if (typeof window.chatbase === 'function') {
+                window.chatbase('close');
+            }
+        } catch (_) {
+            /* embed aún cargando */
+        }
+    };
+
+    const keepChatbaseMinimized = () => {
+        if (userOpenedChatbase) return;
+        closeChatbaseWidget();
+        document.body.classList.remove('canastatron-intro-active');
+    };
+
+    const PLACEHOLDER_REPLY_RE = /(?:\[\s*1\s*\]\s*)?Cotizar evento para\s*\[?\s*X\s*\]?\s*personas\.?/gi;
+    const CLEAN_REPLY_TEXT = '[1] Cotizar evento o paquete';
+
+    const scrubChatbasePlaceholderText = (root) => {
+        if (!root || root.nodeType !== 1) return;
+
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        let current = walker.nextNode();
+        while (current) {
+            nodes.push(current);
+            current = walker.nextNode();
+        }
+
+        nodes.forEach((textNode) => {
+            const value = textNode.nodeValue;
+            if (!value || !/Cotizar evento para/i.test(value)) return;
+            PLACEHOLDER_REPLY_RE.lastIndex = 0;
+            if (!PLACEHOLDER_REPLY_RE.test(value)) return;
+            PLACEHOLDER_REPLY_RE.lastIndex = 0;
+            textNode.nodeValue = value.replace(PLACEHOLDER_REPLY_RE, CLEAN_REPLY_TEXT);
+        });
+
+        root.querySelectorAll?.('[aria-label], [title], [placeholder], button, a, [role="button"]').forEach((el) => {
+            ['aria-label', 'title', 'placeholder'].forEach((attr) => {
+                const attrVal = el.getAttribute?.(attr);
+                if (!attrVal || !/Cotizar evento para/i.test(attrVal)) return;
+                PLACEHOLDER_REPLY_RE.lastIndex = 0;
+                if (PLACEHOLDER_REPLY_RE.test(attrVal)) {
+                    PLACEHOLDER_REPLY_RE.lastIndex = 0;
+                    el.setAttribute(attr, attrVal.replace(PLACEHOLDER_REPLY_RE, CLEAN_REPLY_TEXT));
+                }
+            });
+        });
+    };
+
+    const scrubChatbaseIframes = () => {
+        document.querySelectorAll('iframe[src*="chatbase"], #chatbase-bubble-window iframe').forEach((frame) => {
+            try {
+                const doc = frame.contentDocument;
+                if (doc?.body) scrubChatbasePlaceholderText(doc.body);
+            } catch (_) {
+                /* cross-origin: no acceso al iframe */
+            }
+        });
+    };
+
+    const ensureChatbaseReadyHooks = () => {
+        keepChatbaseMinimized();
+        scrubChatbasePlaceholderText(document.body);
+        scrubChatbaseIframes();
+    };
+
+    let chatbaseReadyAttempts = 0;
+    const chatbaseReadyTimer = window.setInterval(() => {
+        chatbaseReadyAttempts += 1;
+        const ready =
+            (typeof window.chatbase === 'function' && window.chatbase('getState') === 'initialized') ||
+            (window.chatbase && typeof window.chatbase.close === 'function');
+
+        if (ready) {
+            ensureChatbaseReadyHooks();
+            window.clearInterval(chatbaseReadyTimer);
+            /* Cierres de refuerzo solo mientras el usuario no haya abierto el chat */
+            [400, 1000, 2000].forEach((ms) => {
+                window.setTimeout(keepChatbaseMinimized, ms);
+            });
+        } else if (chatbaseReadyAttempts >= 40) {
+            window.clearInterval(chatbaseReadyTimer);
+            keepChatbaseMinimized();
+        }
+    }, 250);
+
+    if (typeof MutationObserver === 'function') {
+        const chatbaseTextObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) {
+                        scrubChatbasePlaceholderText(node);
+                    } else if (node.nodeType === 3 && node.nodeValue && /Cotizar evento para/i.test(node.nodeValue)) {
+                        PLACEHOLDER_REPLY_RE.lastIndex = 0;
+                        node.nodeValue = node.nodeValue.replace(PLACEHOLDER_REPLY_RE, CLEAN_REPLY_TEXT);
+                    }
+                });
+            });
+            scrubChatbaseIframes();
+        });
+        chatbaseTextObserver.observe(document.documentElement, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+    }
+
+    /* ======================================================= */
+    /* 5. Revelar Canastatron minimizado (sin overlay / intro) */
     /* ======================================================= */
     const cineIntro = document.getElementById('cine-intro');
     const floatingCluster = document.querySelector('.floating-contact-cluster');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (floatingCluster) {
-        const playCanastatronIntro = () => {
-            const launcher = document.getElementById('canasta-ai-launcher');
-            const bubble = launcher?.querySelector('.canasta-ai-float__bubble');
-
-            if (!launcher || prefersReducedMotion) {
-                return;
-            }
-
-            floatingCluster.classList.add('floating-contact-cluster--intro');
-            launcher.classList.add('canasta-ai-float--intro');
-            document.body.classList.add('canastatron-intro-active');
-            bubble?.setAttribute('aria-hidden', 'false');
-
-            window.setTimeout(() => {
-                const firstRect = floatingCluster.getBoundingClientRect();
-                floatingCluster.classList.remove('floating-contact-cluster--intro');
-
-                const lastRect = floatingCluster.getBoundingClientRect();
-                const dx = (firstRect.left + firstRect.width / 2) - (lastRect.left + lastRect.width / 2);
-                const dy = (firstRect.top + firstRect.height / 2) - (lastRect.top + lastRect.height / 2);
-
-                floatingCluster.classList.add('floating-contact-cluster--intro-dock');
-                floatingCluster.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
-                floatingCluster.style.transformOrigin = 'center center';
-                floatingCluster.style.transition = 'none';
-
-                requestAnimationFrame(() => {
-                    floatingCluster.style.transition = 'transform 1.4s cubic-bezier(0.33, 1, 0.45, 1)';
-                    floatingCluster.style.transform = '';
-                });
-
-                window.setTimeout(() => {
-                    document.body.classList.remove('canastatron-intro-active');
-                    launcher.classList.add('canasta-ai-float--intro-out');
-                    bubble?.setAttribute('aria-hidden', 'true');
-                }, 750);
-
-                window.setTimeout(() => {
-                    launcher.classList.remove('canasta-ai-float--intro', 'canasta-ai-float--intro-out');
-                    floatingCluster.classList.remove('floating-contact-cluster--intro-dock');
-                    floatingCluster.style.transition = '';
-                    floatingCluster.style.transform = '';
-                    floatingCluster.style.transformOrigin = '';
-                }, 1500);
-            }, 3600);
-        };
-
         const revealCanastron = () => {
-            document.body.classList.remove('cine-intro-active');
+            document.body.classList.remove('cine-intro-active', 'canastatron-intro-active');
+            floatingCluster.classList.remove(
+                'floating-contact-cluster--intro',
+                'floating-contact-cluster--intro-dock'
+            );
             floatingCluster.classList.add('floating-contact-cluster--revealed');
-            playCanastatronIntro();
+
+            const launcher = document.getElementById('canasta-ai-launcher');
+            launcher?.classList.remove('canasta-ai-float--intro', 'canasta-ai-float--intro-out');
+            launcher?.querySelector('.canasta-ai-float__bubble')?.setAttribute('aria-hidden', 'true');
+            keepChatbaseMinimized();
         };
 
         if (cineIntro) {
