@@ -72,13 +72,8 @@
 }
 
 .canasta-ai-float__bubble::before {
-    content: "Canastatron";
-    display: block;
-    margin-bottom: 0.35rem;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: rgba(255, 180, 100, 0.95);
+    content: none;
+    display: none;
 }
 
 .canasta-ai-float__bubble::after {
@@ -173,8 +168,7 @@ body.canastatron-intro-active::after {
 }
 
 .canasta-ai-float--intro .canasta-ai-float__bubble::before {
-    font-size: 0.5rem;
-    margin-bottom: 0.5rem;
+    display: none;
 }
 
 .canasta-ai-float--intro .canasta-ai-float__bubble::after {
@@ -443,4 +437,15 @@ body.canastatron-intro-active::after {
     .canasta-ai-float__bubble {
         transition: opacity 0.2s ease, visibility 0.2s ease;
     }
+}
+
+/* Oculta el botón flotante default de Chatbase (suele decir "Taco Bot");
+   Canastatron es el único lanzador visible. */
+#chatbase-bubble-button,
+button#chatbase-bubble-button,
+div[id="chatbase-bubble-button"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
 }
