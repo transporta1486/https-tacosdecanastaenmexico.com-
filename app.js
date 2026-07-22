@@ -636,10 +636,13 @@ const setupPWAInstallTracking = () => {
     // 1. Registro del Service Worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-             // Registrar el archivo correcto del service worker del proyecto
-             navigator.serviceWorker.register('/service-worker.js') 
-                 .then(reg => console.log('Service Worker registrado con éxito:', reg))
-                 .catch(err => console.error('Fallo el registro del Service Worker:', err));
+             navigator.serviceWorker.register('/service-worker.js?v=67')
+                 .then((reg) => {
+                     console.log('Service Worker registrado con éxito:', reg);
+                     if (reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+                     reg.update();
+                 })
+                 .catch((err) => console.error('Fallo el registro del Service Worker:', err));
         });
     }
 

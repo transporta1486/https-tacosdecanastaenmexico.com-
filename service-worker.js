@@ -1,5 +1,11 @@
 // Nombre del caché. Incrementa este número cada vez que modifiques archivos CRÍTICOS (HTML, CSS, JS)
-const CACHE_NAME = 'tacos-canasta-cache-v66';
+const CACHE_NAME = 'tacos-canasta-cache-v67';
+
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+});
 
 // Lista de archivos para precachear (CRÍTICO: Incluye todos los HTML, CSS, JS y recursos principales)
 const urlsToCache = [
@@ -60,24 +66,35 @@ const urlsToCache = [
     '/icons/icon-maskable-512x512.png'
 ];
 
+const isCriticalAsset = (url) => {
+    try {
+        const path = new URL(url).pathname;
+        return (
+            path === '/' ||
+            path.endsWith('.html') ||
+            path.endsWith('.js') ||
+            path.endsWith('.css') ||
+            path.endsWith('/service-worker.js')
+        );
+    } catch (_) {
+        return false;
+    }
+};
 
 // Evento 'install': Se activa cuando el Service Worker es instalado.
 self.addEventListener('install', (event) => {
-    // Espera hasta que el caché se abra y los archivos sean añadidos.
+    self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
                 console.log('Service Worker: Pre-caching de recursos.');
-                // CORRECCIÓN CLAVE: El Service Worker solo puede cachear recursos de tu dominio.
-                // Si Tailwind está en esta lista, dará CORS. Al usar solo los archivos de arriba, lo evitamos.
                 return cache.addAll(urlsToCache);
             })
             .catch((error) => {
-                // Si ves este error, es porque algún archivo en urlsToCache no existe (404).
                 console.error('Service Worker: Fallo al pre-cachear URLs:', error);
-                // Muestra cuál URL falló si es posible
-                // La línea 43 del error anterior está aquí:
-                Promise.all(urlsToCache.map(url => fetch(url).catch(err => console.error(`Fallo al cargar URL: ${url}`, err))));
+                return Promise.all(
+                    urlsToCache.map((url) => fetch(url).catch((err) => console.error(`Fallo al cargar URL: ${url}`, err)))
+                );
             })
     );
 });
@@ -86,7 +103,6 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
     const cacheWhitelist = [CACHE_NAME];
 
-    // Limpia cachés antiguos que ya no son necesarios.
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
@@ -97,45 +113,49 @@ self.addEventListener('activate', (event) => {
                     }
                 })
             );
-        })
+        }).then(() => self.clients.claim())
     );
-    // Asegura que el SW toma el control inmediatamente después de activarse
-    return self.clients.claim();
 });
 
-// Evento 'fetch': Intercepta solicitudes de red. (Esta lógica está bien)
+// HTML/CSS/JS: red primero (evita overlay/chat viejos pegados en caché).
+// Resto: cache-first.
 self.addEventListener('fetch', (event) => {
-    // Estrategia: Cache, luego Network (Intenta usar el caché primero)
+    if (event.request.method !== 'GET') return;
+
+    const requestUrl = event.request.url;
+
+    if (isCriticalAsset(requestUrl)) {
+        event.respondWith(
+            fetch(event.request)
+                .then((networkResponse) => {
+                    if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+                        const copy = networkResponse.clone();
+                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+                    }
+                    return networkResponse;
+                })
+                .catch(() => caches.match(event.request))
+        );
+        return;
+    }
+
     event.respondWith(
-        caches.match(event.request)
-            .then((response) => {
-                // Devuelve la respuesta del caché si está disponible
-                if (response) {
+        caches.match(event.request).then((cached) => {
+            if (cached) return cached;
+            return fetch(event.request).then((response) => {
+                if (!response || response.status !== 200 || response.type !== 'basic') {
                     return response;
                 }
-                // Si no está en caché, va a la red
-                return fetch(event.request).then(
-                    (response) => {
-                        // Verifica si recibimos una respuesta válida
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        // Clona la respuesta. Una respuesta es un stream y solo se puede consumir una vez.
-                        const responseToCache = response.clone();
-
-                        // Abre el caché y almacena la nueva respuesta
-                        caches.open(CACHE_NAME)
-                            .then((cache) => {
-                                // No cachear solicitudes externas como Google Analytics o fuentes. (Aquí se excluyen automáticamente las CDN)
-                                if (!event.request.url.includes('google-analytics') && !event.request.url.includes('googletagmanager')) {
-                                    cache.put(event.request, responseToCache);
-                                }
-                            });
-
-                        return response;
-                    }
-                );
-            })
+                if (
+                    !requestUrl.includes('google-analytics') &&
+                    !requestUrl.includes('googletagmanager') &&
+                    !requestUrl.includes('chatbase')
+                ) {
+                    const copy = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+                }
+                return response;
+            });
+        })
     );
 });
