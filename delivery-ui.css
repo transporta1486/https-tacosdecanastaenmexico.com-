@@ -40,9 +40,10 @@
     padding-bottom: calc(var(--delivery-sticky-h) + var(--delivery-cookie-h) + env(safe-area-inset-bottom, 0px)) !important;
 }
 
-.delivery-app *,
-.delivery-app *::before,
-.delivery-app *::after {
+/* Tipografía del sitio — no aplicar a iconos Font Awesome (::before) */
+.delivery-app *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands),
+.delivery-app *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands)::before,
+.delivery-app *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands)::after {
     font-family: 'Poppins', system-ui, -apple-system, sans-serif !important;
 }
 
@@ -53,7 +54,15 @@
 .delivery-app .fas,
 .delivery-app .far,
 .delivery-app .fab,
-.delivery-app .fa {
+.delivery-app .fa,
+.delivery-app i.fas::before,
+.delivery-app i.far::before,
+.delivery-app i.fab::before,
+.delivery-app i.fa::before,
+.delivery-app .fas::before,
+.delivery-app .far::before,
+.delivery-app .fab::before,
+.delivery-app .fa::before {
     font-style: normal !important;
     font-variant: normal !important;
     text-rendering: auto !important;
@@ -67,13 +76,21 @@
 .delivery-app .fas,
 .delivery-app .far,
 .delivery-app i.fa:not(.fab):not(.far),
-.delivery-app .fa:not(.fab):not(.far) {
+.delivery-app .fa:not(.fab):not(.far),
+.delivery-app i.fas::before,
+.delivery-app i.far::before,
+.delivery-app .fas::before,
+.delivery-app .far::before,
+.delivery-app i.fa:not(.fab):not(.far)::before,
+.delivery-app .fa:not(.fab):not(.far)::before {
     font-family: 'Font Awesome 6 Free' !important;
     font-weight: 900 !important;
 }
 
 .delivery-app i.fab,
-.delivery-app .fab {
+.delivery-app .fab,
+.delivery-app i.fab::before,
+.delivery-app .fab::before {
     font-family: 'Font Awesome 6 Brands' !important;
     font-weight: 400 !important;
 }
