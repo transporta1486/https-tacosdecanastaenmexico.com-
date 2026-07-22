@@ -1,0 +1,24 @@
+            <form class="delivery-wa-order" id="hero-wa-order" aria-label="Armar pedido para WhatsApp">
+                <p class="delivery-wa-order__title">Arma tu pedido</p>
+                <div class="delivery-wa-order__fields">
+                    <label class="delivery-wa-order__field">
+                        <span class="delivery-wa-order__label">Sabor</span>
+                        <select id="wa-order-flavor" class="delivery-wa-order__input">
+                            <option value="mixto">Mixto (varios sabores)</option>
+                            <option value="chicharrón">Chicharrón</option>
+                            <option value="papa">Papa</option>
+                            <option value="frijol">Frijol</option>
+                            <option value="mole rojo">Mole rojo</option>
+                        </select>
+                    </label>
+                    <label class="delivery-wa-order__field">
+                        <span class="delivery-wa-order__label">Personas</span>
+                        <input type="number" id="wa-order-qty" class="delivery-wa-order__input" min="20" step="1" value="20" inputmode="numeric" aria-describedby="wa-order-qty-hint">
+                    </label>
+                    <p id="wa-order-qty-hint" class="delivery-wa-order__hint">Mín. 20 personas = 100 tacos (5 c/u)</p>
+                    <label class="delivery-wa-order__field delivery-wa-order__field--full">
+                        <span class="delivery-wa-order__label">Colonia o zona</span>
+                        <input type="text" id="wa-order-zone" class="delivery-wa-order__input" placeholder="Ej. Del Valle, Satélite..." autocomplete="address-level3">
+                    </label>
+                </div>
+            </form>

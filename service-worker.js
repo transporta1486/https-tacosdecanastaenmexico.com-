@@ -1,5 +1,5 @@
 // Nombre del caché. Incrementa este número cada vez que modifiques archivos CRÍTICOS (HTML, CSS, JS)
-const CACHE_NAME = 'tacos-canasta-cache-v54';
+const CACHE_NAME = 'tacos-canasta-cache-v62';
 
 // Lista de archivos para precachear (CRÍTICO: Incluye todos los HTML, CSS, JS y recursos principales)
 const urlsToCache = [
@@ -24,6 +24,7 @@ const urlsToCache = [
     '/privacidad.html',
     '/terminos.html',
     '/app.js',
+    '/whatsapp.js',
     '/manifest.json',
 
     // Imagen principal (Debes asegurarte que este archivo existe y está en la raíz)
@@ -46,14 +47,17 @@ const urlsToCache = [
     // ... Si tienes más zonas, agrégalas aquí ...
 
     // Íconos PWA (Deben coincidir con los de manifest.json y deben existir en la carpeta /icons/)
+    '/icons/icon-32x32.png',
     '/icons/icon-72x72.png',
     '/icons/icon-96x96.png',
     '/icons/icon-128x128.png',
     '/icons/icon-144x144.png',
     '/icons/icon-152x152.png',
+    '/icons/icon-180x180.png',
     '/icons/icon-192x192.png',
     '/icons/icon-384x384.png',
-    '/icons/icon-512x512.png'
+    '/icons/icon-512x512.png',
+    '/icons/icon-maskable-512x512.png'
 ];
 
 

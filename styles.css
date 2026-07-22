@@ -1262,49 +1262,7 @@ body.cine-intro-active {
     .cine-word { opacity: 1; animation: none; filter: none; transform: none; }
 }
 
-/* ================== BANNER MUNDIAL 2026 (temporal) ================== */
-.banner-mundialista {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 1rem 1.25rem;
-    margin: 0 0 2.5rem;
-    padding: 1.35rem 1.5rem;
-    background: linear-gradient(135deg, #141414 0%, #1a2618 42%, #1a1a1a 100%);
-    border: 2px solid rgba(255, 236, 0, 0.4);
-    border-radius: 14px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    position: relative;
-    overflow: hidden;
-}
-
-.banner-mundialista::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #ff6b35, #ffec00, #2d8f47, #ffec00);
-}
-
-.banner-mundialista__badge {
-    flex-shrink: 0;
-    background: linear-gradient(135deg, #2d8f47, #1a5c30);
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.45rem 0.85rem;
-    border-radius: 999px;
-}
-
-.banner-mundialista__content { flex: 1; min-width: min(100%, 260px); }
-.banner-mundialista__titulo { margin: 0 0 0.5rem; font-size: clamp(1.15rem, 3.5vw, 1.45rem); font-weight: 700; color: #ffec00; }
-.banner-mundialista__texto { margin: 0 0 1rem; color: rgba(255, 255, 255, 0.88); font-size: 0.95rem; line-height: 1.5; }
-.banner-mundialista__texto strong { color: #ff6b35; }
-.banner-mundialista__cta { display: inline-block; font-size: 0.8rem !important; padding: 0.65rem 1.1rem !important; }
-
-/* ================== CLUSTER FLOTANTE + BALÓN MUNDIAL ================== */
+/* ================== CLUSTER FLOTANTE (Canastatron + contacto) ================== */
 .floating-contact-cluster {
     position: fixed;
     right: max(14px, env(safe-area-inset-right, 0px));
@@ -1352,42 +1310,3 @@ body.cine-intro-active {
 
 .whatsapp-float { background-color: #25d366; }
 .phone-float { background-color: #ff6b35; }
-
-.mundial-ball {
-    position: fixed;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    font-size: 4rem;
-    z-index: 100002;
-    pointer-events: none;
-    opacity: 0;
-}
-
-.mundial-ball.ball-intro-play {
-    animation: mundialBallIntro 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes mundialBallIntro {
-    0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
-    40% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
-    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
-}
-
-.mundial-ball-pop {
-    position: fixed;
-    transform: translate(-50%, -50%) scale(0.5);
-    font-size: 1.25rem;
-    pointer-events: none;
-    z-index: 100003;
-    opacity: 0;
-}
-
-.mundial-ball-pop--active {
-    animation: mundialBallPop 0.55s ease-out forwards;
-}
-
-@keyframes mundialBallPop {
-    0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-    100% { opacity: 0; transform: translate(-50%, -90%) scale(1.1); }
-}

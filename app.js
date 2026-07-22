@@ -324,9 +324,9 @@ document.addEventListener('DOMContentLoaded', () => {
             openChatbaseWidget();
             scheduleEngageHide(2200);
             if (typeof gtag === 'function') {
-                gtag('event', 'abrir_chat_canasta_ai', {
+                gtag('event', 'abrir_chat_canastatron', {
                     event_category: 'engagement',
-                    event_label: 'chatbase'
+                    event_label: 'pedido_canastatron'
                 });
             }
         });
@@ -340,21 +340,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ======================================================= */
-    /* 5. Intro cinematográfica → revelación Canastatron + balón */
+    /* 5. Intro → Canastatron saluda y recibe al usuario */
     /* ======================================================= */
     const cineIntro = document.getElementById('cine-intro');
     const floatingCluster = document.querySelector('.floating-contact-cluster');
-    const mundialBall = document.getElementById('mundial-ball');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const playBallIntro = () => {
-        if (!mundialBall || prefersReducedMotion) {
-            return;
-        }
-        mundialBall.classList.remove('ball-intro-play');
-        void mundialBall.offsetWidth;
-        mundialBall.classList.add('ball-intro-play');
-    };
 
     if (floatingCluster) {
         const playCanastatronIntro = () => {
@@ -362,7 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const bubble = launcher?.querySelector('.canasta-ai-float__bubble');
 
             if (!launcher || prefersReducedMotion) {
-                playBallIntro();
                 return;
             }
 
@@ -401,7 +390,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     floatingCluster.style.transition = '';
                     floatingCluster.style.transform = '';
                     floatingCluster.style.transformOrigin = '';
-                    playBallIntro();
                 }, 1500);
             }, 3600);
         };
@@ -431,34 +419,6 @@ document.addEventListener('DOMContentLoaded', () => {
             revealCanastron();
         }
     }
-
-    /* ======================================================= */
-    /* 6. Micro-balón en CTAs y menú */
-    /* ======================================================= */
-    const ctaSelector = '.btn-warning, .btn-naranja, .btn-paquete, .btn-success, .nav-glass__link, .delivery-hero__cta, .delivery-product-card__cta, .delivery-sticky-bar__btn';
-
-    const spawnButtonBall = (el) => {
-        if (prefersReducedMotion) {
-            return;
-        }
-        const rect = el.getBoundingClientRect();
-        const pop = document.createElement('span');
-        pop.className = 'mundial-ball-pop';
-        pop.textContent = '⚽';
-        pop.setAttribute('aria-hidden', 'true');
-        pop.style.left = `${rect.left + rect.width / 2}px`;
-        pop.style.top = `${rect.top + rect.height / 2}px`;
-        document.body.appendChild(pop);
-        requestAnimationFrame(() => pop.classList.add('mundial-ball-pop--active'));
-        window.setTimeout(() => pop.remove(), 600);
-    };
-
-    document.addEventListener('click', (e) => {
-        const target = e.target.closest(ctaSelector);
-        if (target) {
-            spawnButtonBall(target);
-        }
-    }, { passive: true });
 
     initCoverageSearch({
         inputId: 'footer-coverage-input',

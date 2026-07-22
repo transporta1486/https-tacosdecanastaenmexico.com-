@@ -4,10 +4,12 @@
   "scripts": {
     "deploy": "netlify deploy --prod --no-build --dir .",
     "deploy:preview": "netlify deploy --no-build --dir .",
+    "icons:generate": "node scripts/generate-pwa-icons.mjs",
     "netlify:link": "netlify link --name tacosdecanastaenmexico",
     "netlify:status": "netlify status"
   },
   "devDependencies": {
-    "netlify-cli": "^26.2.0"
+    "netlify-cli": "^26.2.0",
+    "sharp": "^0.35.3"
   }
 }

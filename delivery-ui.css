@@ -4,32 +4,39 @@
 /* ======================================================= */
 
 .delivery-app {
-    --delivery-bg: #f5f5f7;
+    --delivery-bg: #ffffff;
     --delivery-surface: #ffffff;
+    --delivery-input-bg: #f5f5f5;
     --delivery-text: #111111;
-    --delivery-muted: #4a4a4a;
-    --delivery-border: rgba(0, 0, 0, 0.12);
+    --delivery-muted: #5c5c5c;
+    --delivery-border: rgba(0, 0, 0, 0.08);
     --delivery-primary: #06c167;
-    --delivery-primary-dark: #05a858;
+    --delivery-primary-dark: #049652;
     --delivery-accent: #c0392b;
     --delivery-accent-dark: #a93226;
     --delivery-radius: 16px;
     --delivery-radius-lg: 20px;
-    --delivery-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    --delivery-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.1);
+    --delivery-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.06);
+    --delivery-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.04), 0 16px 40px rgba(0, 0, 0, 0.08);
+    --delivery-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+    --delivery-section-py: clamp(2.75rem, 6vw, 4rem);
+    --delivery-container: 1120px;
     --delivery-sticky-h: 88px;
     --delivery-cookie-h: 0px;
     --nav-height: 56px;
     /* Anula variables del tema oscuro legacy */
     --text-primary: #111111;
-    --text-secondary: #333333;
-    --text-muted: #4a4a4a;
+    --text-secondary: #5c5c5c;
+    --text-muted: #5c5c5c;
     background: var(--delivery-bg) !important;
     color: var(--delivery-text) !important;
-    font-family: 'Poppins', system-ui, -apple-system, sans-serif !important;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
     font-size: 16px;
-    line-height: 1.55;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
     padding-bottom: calc(var(--delivery-sticky-h) + var(--delivery-cookie-h) + env(safe-area-inset-bottom, 0px)) !important;
 }
 
@@ -39,11 +46,71 @@
     font-family: 'Poppins', system-ui, -apple-system, sans-serif !important;
 }
 
-.delivery-app .fa,
+.delivery-app i.fas,
+.delivery-app i.far,
+.delivery-app i.fab,
+.delivery-app i.fa,
 .delivery-app .fas,
+.delivery-app .far,
 .delivery-app .fab,
-.delivery-app .far {
-    font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
+.delivery-app .fa {
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+}
+
+.delivery-app i.fas,
+.delivery-app i.far,
+.delivery-app .fas,
+.delivery-app .far,
+.delivery-app i.fa:not(.fab):not(.far),
+.delivery-app .fa:not(.fab):not(.far) {
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+}
+
+.delivery-app i.fab,
+.delivery-app .fab {
+    font-family: 'Font Awesome 6 Brands' !important;
+    font-weight: 400 !important;
+}
+
+.delivery-app section#hero.hero .btn-warning .fab,
+.delivery-app .delivery-hero__cta .fab,
+.delivery-app .floating-btn .fab,
+.delivery-app .delivery-sticky-bar__btn--order .fab {
+    font-family: 'Font Awesome 6 Brands' !important;
+    font-weight: 400 !important;
+}
+
+.delivery-app section#hero.hero .btn-warning .fas,
+.delivery-app .floating-btn .fas,
+.delivery-app .delivery-sticky-bar__btn--call .fas {
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+}
+
+.delivery-app section#hero.hero .btn-warning i,
+.delivery-app .delivery-hero__cta i {
+    color: #fff !important;
+}
+
+.delivery-app .floating-btn i {
+    color: #fff !important;
+}
+
+.delivery-app .delivery-sticky-bar__icon i {
+    color: inherit !important;
+    font-size: 1.15rem !important;
+}
+
+.delivery-app section#hero.hero .text-warning.fas,
+.delivery-app section#hero.hero .text-warning.fab,
+.delivery-app section#hero.hero i.text-warning {
+    color: var(--delivery-accent) !important;
 }
 
 .delivery-app p,
@@ -121,7 +188,7 @@
 .delivery-hero {
     position: relative;
     padding: 1.5rem 1rem 2rem;
-    background: linear-gradient(180deg, #fff 0%, var(--delivery-bg) 100%);
+    background: #ffffff;
     overflow: hidden;
 }
 
@@ -166,7 +233,7 @@
 .delivery-location-picker__input {
     width: 100%;
     border: none;
-    background: var(--delivery-bg);
+    background: var(--delivery-input-bg);
     border-radius: 12px;
     padding: 0.75rem 1rem;
     font-family: 'Poppins', sans-serif;
@@ -211,7 +278,7 @@
 }
 
 .delivery-location-picker__results li a:hover {
-    background: var(--delivery-bg);
+    background: var(--delivery-input-bg);
     color: var(--delivery-accent);
 }
 
@@ -254,6 +321,113 @@
 .delivery-hero .lead .text-danger {
     color: var(--delivery-accent) !important;
     font-weight: 700;
+}
+
+.delivery-hero__service-info {
+    list-style: none;
+    margin: 0 auto 1.25rem;
+    padding: 0.85rem 1rem;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    text-align: left;
+    background: #f8faf9;
+    border: 1px solid var(--delivery-border);
+    border-radius: var(--delivery-radius);
+    box-shadow: var(--delivery-shadow);
+}
+
+.delivery-hero__service-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--delivery-muted);
+}
+
+.delivery-hero__service-info li svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 0.1rem;
+    color: var(--delivery-primary);
+}
+
+.delivery-hero__service-info li strong {
+    color: var(--delivery-text);
+    font-weight: 600;
+}
+
+.delivery-wa-order {
+    margin: 0 auto 1.25rem;
+    max-width: 360px;
+    padding: 1rem 1.1rem;
+    text-align: left;
+    background: var(--delivery-surface);
+    border: 1px solid var(--delivery-border);
+    border-radius: var(--delivery-radius);
+    box-shadow: var(--delivery-shadow);
+}
+
+.delivery-wa-order__title {
+    margin: 0 0 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--delivery-muted);
+}
+
+.delivery-wa-order__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem 0.75rem;
+}
+
+.delivery-wa-order__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 0;
+}
+
+.delivery-wa-order__field--full {
+    grid-column: 1 / -1;
+}
+
+.delivery-wa-order__label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--delivery-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.delivery-wa-order__input {
+    width: 100%;
+    border: 1px solid var(--delivery-border);
+    background: var(--delivery-input-bg);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--delivery-text);
+    outline: none;
+}
+
+.delivery-wa-order__input:focus {
+    border-color: var(--delivery-primary);
+    box-shadow: 0 0 0 2px rgba(6, 193, 103, 0.2);
+}
+
+.delivery-wa-order__hint {
+    grid-column: 1 / -1;
+    margin: -0.25rem 0 0;
+    font-size: 0.72rem;
+    color: var(--delivery-muted);
 }
 
 .delivery-hero__cta,
@@ -319,7 +493,8 @@
 .delivery-app .hero-premium,
 .delivery-app section#hero.hero {
     min-height: auto;
-    background: linear-gradient(180deg, #fff 0%, var(--delivery-bg) 100%) !important;
+    background: #ffffff !important;
+    background-image: none !important;
 }
 
 .delivery-app .hero-fx,
@@ -387,6 +562,29 @@
     color: var(--delivery-primary);
 }
 
+/* ── Intro local por municipio (SEO) ── */
+.delivery-local-intro {
+    padding: 1.25rem 1rem 0;
+    background: var(--delivery-surface);
+}
+
+.delivery-local-intro__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    background: #f8faf9;
+    border: 1px solid var(--delivery-border);
+    border-left: 4px solid var(--delivery-primary);
+    border-radius: var(--delivery-radius);
+}
+
+.delivery-local-intro__text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--delivery-muted);
+}
+
 /* ── Cómo funciona ── */
 .delivery-steps {
     padding: 2.5rem 1rem;
@@ -421,11 +619,12 @@
 }
 
 .delivery-step {
-    background: var(--delivery-bg);
+    background: #ffffff;
     border-radius: var(--delivery-radius);
     padding: 1.25rem;
     text-align: center;
     border: 1px solid var(--delivery-border);
+    box-shadow: var(--delivery-shadow);
 }
 
 .delivery-step__icon {
@@ -608,7 +807,7 @@
 }
 
 .delivery-app .marca-card {
-    background: var(--delivery-bg);
+    background: #ffffff;
     border: 1px solid var(--delivery-border);
     color: var(--delivery-text) !important;
     border-radius: var(--delivery-radius);
@@ -616,7 +815,7 @@
 }
 
 .delivery-app .testimonio {
-    background: var(--delivery-bg);
+    background: #ffffff;
     border: 1px solid var(--delivery-border);
     border-radius: var(--delivery-radius);
     color: var(--delivery-text);
@@ -637,7 +836,7 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 2.5rem 1rem;
-    background: var(--delivery-bg);
+    background: #ffffff;
 }
 
 @media (min-width: 640px) {
@@ -715,7 +914,7 @@
 }
 
 .delivery-app .faq-item {
-    background: var(--delivery-bg);
+    background: #ffffff;
     border: 1px solid var(--delivery-border);
     border-radius: var(--delivery-radius);
     padding: 1rem 1.25rem;
@@ -1371,7 +1570,7 @@
 }
 
 .delivery-app .footer-coverage-search__results a:hover {
-    background: var(--delivery-bg);
+    background: var(--delivery-input-bg);
     color: var(--delivery-primary) !important;
 }
 
@@ -1560,7 +1759,7 @@
 }
 
 .delivery-app .cookie-banner__btn--reject {
-    background: var(--delivery-bg);
+    background: var(--delivery-input-bg);
     color: var(--delivery-text);
     border: 1px solid var(--delivery-border);
 }
@@ -1674,3 +1873,652 @@
     backdrop-filter: none !important;
 }
 
+/* ======================================================= */
+/* LEGIBILIDAD MUNICIPIOS — anular glass oscuro en tema claro */
+/* ======================================================= */
+
+.delivery-app section#hero.hero.delivery-hero {
+    min-height: auto !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 2rem !important;
+    text-shadow: none !important;
+    border-bottom: none !important;
+    background: #ffffff !important;
+    background-image: none !important;
+}
+
+.delivery-app section#hero.hero .display-3,
+.delivery-app section#hero.hero h1 {
+    color: #111111 !important;
+    text-shadow: none !important;
+}
+
+.delivery-app section#hero.hero .lead,
+.delivery-app section#hero.hero p {
+    text-shadow: none !important;
+}
+
+.delivery-app section#hero.hero .lead {
+    color: #333333 !important;
+}
+
+.delivery-app .seccion-dark--corp .titulo-empresa {
+    color: var(--delivery-text) !important;
+    text-shadow: none !important;
+}
+
+.delivery-app .seccion-dark--corp .subtitulo-empresa {
+    color: var(--delivery-muted) !important;
+}
+
+.delivery-app .seccion-dark--corp .card-beneficio h3 {
+    color: var(--delivery-text) !important;
+}
+
+.delivery-app .seccion-dark--corp .caja-accion-dark h4,
+.delivery-app .seccion-dark--corp .caja-accion-dark p {
+    color: var(--delivery-text) !important;
+}
+
+.delivery-app .seccion-dark--corp .caja-accion-dark p {
+    color: var(--delivery-muted) !important;
+}
+
+.delivery-app .referencias-corporativas--apex .titulo-naranja {
+    color: var(--delivery-accent) !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    filter: none !important;
+}
+
+.delivery-app .referencias-corporativas--apex .subtitulo-blanco {
+    color: var(--delivery-muted) !important;
+}
+
+.delivery-app .referencias-corporativas--apex .marca-card {
+    color: var(--delivery-text) !important;
+    background: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid var(--delivery-border) !important;
+    box-shadow: var(--delivery-shadow) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    text-shadow: none !important;
+}
+
+.delivery-app .referencias-corporativas--apex .marca-card::before {
+    display: none !important;
+}
+
+.delivery-app .referencias-corporativas--apex .testimonio p {
+    color: var(--delivery-text) !important;
+}
+
+.delivery-app .referencias-corporativas--apex .testimonio span {
+    color: var(--delivery-muted) !important;
+}
+
+.delivery-app .tabla-paquetes--neo .paquete-card h3 {
+    color: var(--delivery-text) !important;
+    text-shadow: none !important;
+}
+
+.delivery-app .tabla-paquetes--neo .paquete-card h3::after {
+    display: none !important;
+    content: none !important;
+}
+
+.delivery-app .tabla-paquetes--neo .paquete-card .precio {
+    color: var(--delivery-accent) !important;
+    text-shadow: none !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.delivery-app .tabla-paquetes--neo .paquete-card .precio span {
+    color: var(--delivery-muted) !important;
+}
+
+.delivery-app .tabla-paquetes--neo .paquete-card li {
+    color: var(--delivery-text) !important;
+}
+
+.delivery-app .preguntas-frecuentes--glass h3 {
+    color: var(--delivery-text) !important;
+}
+
+.delivery-app .preguntas-frecuentes--glass .faq-item h4 {
+    color: var(--delivery-text) !important;
+}
+
+.delivery-app .preguntas-frecuentes--glass .faq-item p {
+    color: var(--delivery-muted) !important;
+}
+
+.delivery-app section.locations--neo h2,
+.delivery-app .locations--neo h2.display-5 {
+    color: var(--delivery-text) !important;
+    text-shadow: none !important;
+}
+
+.delivery-app .locations--neo .location-link {
+    color: var(--delivery-text) !important;
+    background: var(--delivery-surface) !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid var(--delivery-border) !important;
+    border-top: 1px solid var(--delivery-border) !important;
+    border-bottom: 1px solid var(--delivery-border) !important;
+    box-shadow: var(--delivery-shadow) !important;
+    text-shadow: none !important;
+}
+
+.delivery-app .locations--neo .location-link:hover {
+    color: #ffffff !important;
+}
+
+.delivery-app .delivery-steps__title,
+.delivery-app .delivery-step__heading {
+    color: #111111 !important;
+}
+
+.delivery-app .delivery-step__text {
+    color: #333333 !important;
+}
+
+.delivery-app .delivery-menu__title,
+.delivery-app .delivery-product-card__name {
+    color: #111111 !important;
+}
+
+.delivery-app .delivery-product-card__desc {
+    color: #333333 !important;
+}
+
+/* ======================================================= */
+/* TEMA BLANCO PREMIUM — sin degradados grises (glass legacy) */
+/* ======================================================= */
+
+.delivery-app section.hero,
+.delivery-app section#hero.hero,
+.delivery-app .delivery-hero,
+.delivery-app .hero-premium {
+    background: #ffffff !important;
+    background-image: none !important;
+}
+
+.delivery-app section.hero > .container,
+.delivery-app section.hero > .delivery-hero__content,
+.delivery-app .hero-premium__band,
+.delivery-app .hero-premium__stage {
+    background: transparent !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+.delivery-app .menu-vitrine .container,
+.delivery-app .preguntas-frecuentes--glass,
+.delivery-app .locations--neo .container,
+.delivery-app .referencias-corporativas--apex .container-empresas,
+.delivery-app .seccion-dark--corp > .container-empresas {
+    background: transparent !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.delivery-app .seccion-dark--corp,
+.delivery-app .referencias-corporativas--apex,
+.delivery-app .tabla-paquetes--neo,
+.delivery-app .locations--neo,
+.delivery-app .preguntas-frecuentes--glass,
+.delivery-app .delivery-steps,
+.delivery-app section.py-5[style*="0d0d0d"] {
+    background: #ffffff !important;
+    background-image: none !important;
+}
+
+.delivery-app .menu-vitrine .menu-card,
+.delivery-app .referencias-corporativas--apex .marca-card,
+.delivery-app .referencias-corporativas--apex .testimonio,
+.delivery-app .referencias-corporativas--apex .banner-factura,
+.delivery-app .seccion-dark--corp .card-beneficio,
+.delivery-app .seccion-dark--corp .caja-accion-dark,
+.delivery-app .seccion-dark--corp .banner-mundialista,
+.delivery-app .tabla-paquetes--neo .paquete-card,
+.delivery-app .locations--neo .location-link,
+.delivery-app .preguntas-frecuentes--glass .faq-item {
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.delivery-app .delivery-steps {
+    border-top: 1px solid var(--delivery-border);
+    border-bottom: 1px solid var(--delivery-border);
+}
+
+.delivery-app .footer-glass {
+    background: #ffffff !important;
+    border-top: 4px solid var(--delivery-primary) !important;
+    box-shadow: none !important;
+}
+
+.delivery-app .tabla-paquetes--neo::before,
+.delivery-app .tabla-paquetes--neo::after,
+.delivery-app .locations--neo::before,
+.delivery-app .locations--neo::after {
+    display: none !important;
+    content: none !important;
+    opacity: 0 !important;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .delivery-app .menu-vitrine .container,
+    .delivery-app .referencias-corporativas--apex .container-empresas,
+    .delivery-app .seccion-dark--corp > .container-empresas,
+    .delivery-app .preguntas-frecuentes--glass,
+    .delivery-app .tabla-paquetes--neo .paquete-card,
+    .delivery-app .locations--neo .container,
+    .delivery-app .nav-glass,
+    .delivery-app .footer-glass {
+        background: #ffffff !important;
+    }
+}
+
+/* ======================================================= */
+/* PREMIUM POLISH — app de delivery elegante               */
+/* ======================================================= */
+
+.delivery-app ::selection {
+    background: rgba(6, 193, 103, 0.2);
+    color: var(--delivery-text);
+}
+
+.delivery-app .container-empresas,
+.delivery-app .delivery-steps__inner,
+.delivery-app .delivery-menu__container,
+.delivery-app .tabla-paquetes--neo,
+.delivery-app .preguntas-frecuentes--glass,
+.delivery-app .locations--neo .container,
+.delivery-app .footer-glass__inner {
+    max-width: var(--delivery-container);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Nav premium */
+.delivery-app .nav-glass {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom-color: var(--delivery-border);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.delivery-app .nav-glass__bar {
+    max-width: var(--delivery-container);
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.delivery-app .nav-glass__brand {
+    font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+    letter-spacing: -0.01em;
+}
+
+@media (min-width: 992px) {
+    .delivery-app .nav-glass__link {
+        padding: 0.45rem 0.85rem;
+        border-radius: 999px;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .delivery-app .nav-glass__link:hover,
+    .delivery-app .nav-glass__link--active {
+        background: rgba(192, 57, 43, 0.08);
+    }
+}
+
+/* Hero premium */
+.delivery-hero {
+    padding: clamp(1.25rem, 4vw, 2.5rem) 1.25rem clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.delivery-location-picker {
+    border-radius: var(--delivery-radius-lg);
+    box-shadow: var(--delivery-shadow-card);
+    border-color: var(--delivery-border);
+    padding: 1rem 1.1rem;
+}
+
+.delivery-location-picker__input {
+    min-height: 48px;
+    font-size: 1rem;
+    transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.delivery-hero__title,
+.delivery-app section#hero.hero .display-3,
+.delivery-app section#hero.hero h1 {
+    font-size: clamp(1.85rem, 5.5vw, 2.75rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.12 !important;
+    margin-bottom: 0.65rem !important;
+}
+
+.delivery-hero__subtitle,
+.delivery-app section#hero.hero .lead {
+    font-size: clamp(1rem, 2.8vw, 1.125rem) !important;
+    color: var(--delivery-muted) !important;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.delivery-hero__cta,
+.delivery-app section#hero.hero .btn-warning {
+    width: 100%;
+    max-width: 360px;
+    min-height: 54px;
+    font-size: 1.05rem !important;
+    letter-spacing: 0.01em;
+    box-shadow: 0 6px 20px rgba(6, 193, 103, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.delivery-hero__cta:active,
+.delivery-app section#hero.hero .btn-warning:active {
+    transform: scale(0.98);
+}
+
+.delivery-hero__quick-actions {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.delivery-hero__badge {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.6rem 1rem;
+    border-radius: 14px;
+    box-shadow: var(--delivery-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.delivery-hero__badge:active {
+    transform: scale(0.98);
+}
+
+@media (min-width: 480px) {
+    .delivery-hero__badge {
+        flex: 0 1 auto;
+    }
+}
+
+/* Secciones — ritmo y títulos */
+.delivery-steps,
+.delivery-app .seccion-dark--corp,
+.delivery-app .referencias-corporativas--apex,
+.delivery-app .tabla-paquetes--neo,
+.delivery-menu,
+.delivery-app .menu-vitrine,
+.delivery-app .preguntas-frecuentes--glass,
+.delivery-app .locations--neo,
+.delivery-app section.py-5[style*="0d0d0d"] {
+    padding-top: var(--delivery-section-py) !important;
+    padding-bottom: var(--delivery-section-py) !important;
+}
+
+.delivery-steps__title,
+.delivery-menu__title,
+.delivery-app .menu-vitrine h2,
+.delivery-app .titulo-empresa,
+.delivery-app .titulo-naranja,
+.delivery-app section.py-5 h2,
+.delivery-app .locations--neo h2,
+.delivery-app .preguntas-frecuentes--glass h3 {
+    font-size: clamp(1.35rem, 4vw, 1.75rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+    text-transform: none !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.delivery-app .display-5.text-uppercase {
+    text-transform: none !important;
+    letter-spacing: -0.02em !important;
+}
+
+.delivery-app .subtitulo-empresa,
+.delivery-app .subtitulo-blanco,
+.delivery-app section.py-5 .lead {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Pasos */
+.delivery-step {
+    box-shadow: var(--delivery-shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.delivery-step:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--delivery-shadow-lg);
+}
+
+.delivery-step__icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.05rem;
+}
+
+/* Cards corporativas y paquetes */
+.delivery-app .card-beneficio,
+.delivery-app .caja-accion-dark,
+.delivery-app .banner-mundialista,
+.delivery-app .paquete-card,
+.delivery-app .testimonio,
+.delivery-app .marca-card {
+    border-radius: var(--delivery-radius-lg) !important;
+    box-shadow: var(--delivery-shadow-card) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.delivery-app .card-beneficio:hover,
+.delivery-app .paquete-card:hover,
+.delivery-app .testimonio:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--delivery-shadow-lg) !important;
+}
+
+.delivery-app .paquete-card.destacado {
+    border: 2px solid var(--delivery-accent) !important;
+    box-shadow: 0 4px 24px rgba(192, 57, 43, 0.12) !important;
+}
+
+.delivery-app .tag-naranja,
+.delivery-app .banner-mundialista__badge {
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.delivery-app .btn-naranja,
+.delivery-app .btn-paquete,
+.delivery-app .btn-success,
+.delivery-app .banner-mundialista__cta {
+    min-height: 50px;
+    border-radius: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.delivery-app .btn-naranja:active,
+.delivery-app .btn-paquete:active,
+.delivery-app .btn-success:active {
+    transform: scale(0.98);
+}
+
+.delivery-app .tabla-paquetes--neo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+}
+
+@media (min-width: 768px) {
+    .delivery-app .tabla-paquetes--neo {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .delivery-app .paquete-card.destacado {
+        transform: none;
+    }
+}
+
+/* Menú productos */
+.delivery-product-card {
+    border-radius: var(--delivery-radius-lg);
+    box-shadow: var(--delivery-shadow-card);
+}
+
+.delivery-product-card__cta {
+    min-height: 46px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.delivery-product-card__cta:active {
+    transform: scale(0.98);
+}
+
+/* Zonas */
+.delivery-app .location-link {
+    border-radius: 12px;
+    padding: 0.65rem 1.1rem;
+    font-size: 0.875rem;
+    transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.delivery-app .location-link:active {
+    transform: scale(0.98);
+}
+
+/* FAQ */
+.delivery-app .faq-item {
+    border-radius: var(--delivery-radius);
+    box-shadow: var(--delivery-shadow);
+}
+
+/* Footer premium */
+.delivery-app .footer-glass {
+    padding-top: var(--delivery-section-py) !important;
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+.delivery-app .footer-glass__grid {
+    gap: 1rem !important;
+}
+
+.delivery-app .footer-glass__block {
+    border-radius: var(--delivery-radius-lg) !important;
+    box-shadow: var(--delivery-shadow-card) !important;
+}
+
+.delivery-app .footer-glass__title {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+    color: var(--delivery-muted) !important;
+}
+
+.delivery-app .footer-glass__wa-btn {
+    border-radius: 14px !important;
+    max-width: none;
+}
+
+.delivery-app .footer-coverage-search__input {
+    min-height: 48px;
+    border-radius: 12px !important;
+    transition: box-shadow 0.2s ease;
+}
+
+.delivery-app .footer-coverage-search__input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(6, 193, 103, 0.2);
+    border-color: var(--delivery-primary) !important;
+}
+
+/* Sticky bar refinado */
+.delivery-sticky-bar {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--delivery-border);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.delivery-sticky-bar__btn {
+    border-radius: 14px;
+}
+
+/* Cookies y PWA */
+.delivery-app .cookie-banner--delivery {
+    border-radius: var(--delivery-radius-lg) var(--delivery-radius-lg) 0 0;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-app .cookie-banner__btn {
+    border-radius: 12px;
+    min-height: 44px;
+    font-weight: 700;
+}
+
+.delivery-app #pwa-install-banner {
+    border-radius: var(--delivery-radius-lg) var(--delivery-radius-lg) 0 0;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.25rem;
+}
+
+.delivery-app #pwa-install-banner .pwa-icon {
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+    .delivery-hero__content {
+        max-width: 680px;
+    }
+
+    .delivery-hero__cta,
+    .delivery-app section#hero.hero .btn-warning {
+        width: auto;
+        min-width: 240px;
+    }
+
+    .delivery-app .marcas-grid {
+        gap: 1.25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .delivery-app .footer-glass__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

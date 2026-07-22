@@ -1,0 +1,137 @@
+{
+  "acapotzalco.html": {
+    "intro": "En Azcapotzalco repartimos desde Clavería y Cuitláhuac hasta San Rafael y Del Gas: canasta caliente para oficinas en Industria Vallejo y reuniones familiares en la zona norte de CDMX.",
+    "steps": [
+      "Arma tu pedido de chicharrón, papa o frijol para tu colonia en Azcapotzalco.",
+      "Mándanos por WhatsApp tu dirección en Clavería, Santo Tomás o zona industrial.",
+      "Entregamos en el horario acordado, con tacos humeantes listos para servir."
+    ],
+    "empresa": "Catering corporativo para empresas de la zona industrial y oficinas en Azcapotzalco, con CFDI el mismo día."
+  },
+  "atizapan.html": {
+    "intro": "Cubrimos Atizapán de Zaragoza desde Centro y Las Torres hasta Zona Esmeralda y México Nuevo. Ideal para desayunos de oficina en corporativos y eventos en plazas comerciales del Edomex.",
+    "steps": [
+      "Elige cuántos tacos necesitas para tu equipo en Atizapán o Zona Esmeralda.",
+      "Comparte colonia y hora por WhatsApp; confirmamos cobertura en minutos.",
+      "Recibe la canasta en tu domicilio u oficina en Atizapán de Zaragoza."
+    ],
+    "empresa": "Facturación inmediata para empresas en Atizapán, ideal para juntas en Zona Esmeralda y parques corporativos."
+  },
+  "benito-juarez.html": {
+    "intro": "Llegamos a Narvarte, Del Valle, Portales y Mixcoac con la misma puntualidad que exigen las oficinas de Benito Juárez. Perfecto para desayunos de equipo cerca de Insurgentes Sur.",
+    "steps": [
+      "Selecciona sabores y cantidad para tu pedido en Benito Juárez.",
+      "Indica colonia (Narvarte, Del Valle, etc.) y horario por WhatsApp.",
+      "Tu canasta llega caliente a tu edificio o domicilio en CDMX sur."
+    ],
+    "empresa": "Servicio B2B para corporativos en Del Valle y Narvarte: higiene certificada y factura al instante."
+  },
+  "coyoacan.html": {
+    "intro": "Servimos Coyoacán Centro, Ciudad Universitaria, Copilco y Del Carmen. Muy pedido por universidades, cafés de barrio y oficinas creativas del sur de la Ciudad.",
+    "steps": [
+      "Define tu pedido para Coyoacán o C.U. según el tamaño de tu grupo.",
+      "Envía ubicación y hora por WhatsApp; atendemos Copilco y Del Carmen.",
+      "Entregamos tacos calientes en tu campus, oficina o casa en Coyoacán."
+    ],
+    "empresa": "Paquetes para empresas y campus en Coyoacán y Ciudad Universitaria, con montaje y facturación CFDI."
+  },
+  "cuatitlan-izcalli.html": {
+    "intro": "En Cuautitlán Izcalli entregamos a Centro Urbano, Lago de Guadalupe, Jardines del Alba y Bosques del Lago. Cobertura rápida para maquiladoras y familias del oriente del Edomex.",
+    "steps": [
+      "Arma tu canasta para oficina o fiesta en Cuautitlán Izcalli.",
+      "WhatsApp con colonia (Lago de Guadalupe, Cofradía, etc.) y personas.",
+      "Llevamos el pedido puntual a tu planta, bodega o domicilio."
+    ],
+    "empresa": "Alimentación masiva para plantas y logística en Cuautitlán Izcalli, con puntualidad de producción."
+  },
+  "cuatitlan-mexico.html": {
+    "intro": "Repartimos en Cuautitlán, Cuautitlán Izcalli, Cofradía y zonas cercanas a Perinorte. Conectamos el corredor industrial con desayunos y eventos sin complicaciones.",
+    "steps": [
+      "Cuéntanos cuántos tacos necesitas en Cuautitlán o zona Perinorte.",
+      "Confirma dirección y hora por WhatsApp para validar ruta.",
+      "Entrega en sitio: bodega, nave industrial o casa en el municipio."
+    ],
+    "empresa": "Catering para parques industriales de Cuautitlán y Cuautitlán Izcalli con factura deducible."
+  },
+  "ecatepec.html": {
+    "intro": "Cobertura en Ecatepec: Ciudad Azteca, San Cristóbal, Jardines de Morelos y Río de Luz. Alto volumen para maquilas, escuelas y eventos familiares en el oriente.",
+    "steps": [
+      "Elige paquete o tacos sueltos para tu zona en Ecatepec.",
+      "Manda colonia y referencia por WhatsApp (Ciudad Azteca, etc.).",
+      "Recibe la canasta en el horario pactado, sin retrasos."
+    ],
+    "empresa": "Desayunos corporativos en Ecatepec con capacidad masiva y CFDI para nómina y eventos."
+  },
+  "gustavo-a-madero.html": {
+    "intro": "Atendemos Gustavo A. Madero: Lindavista, La Villa, Cuautepec, Zona de Hospitales y Indeco. Desayunos para clínicas, escuelas y oficinas del norte de CDMX.",
+    "steps": [
+      "Selecciona menú y cantidad para tu pedido en G.A.M.",
+      "WhatsApp con colonia (Lindavista, Cuautepec, etc.) y hora.",
+      "Llegamos con canasta caliente a tu hospital, escuela u oficina."
+    ],
+    "empresa": "Servicio para hospitales y corporativos en Lindavista y zona de Hospitales, con higiene reforzada."
+  },
+  "miguel-hidalgo.html": {
+    "intro": "Entregas en Polanco, Tacuba, Granada, Anáhuac y Lomas. Pensado para corporativos de alto tráfico y residencias en una de las alcaldías con más demanda de catering.",
+    "steps": [
+      "Arma tu pedido premium o económico para Miguel Hidalgo.",
+      "Confirma dirección en Polanco, Tacuba u otra colonia por WhatsApp.",
+      "Entrega discreta y puntual en torre de oficinas o domicilio."
+    ],
+    "empresa": "Catering ejecutivo en Polanco y Granada: montaje profesional y facturación inmediata."
+  },
+  "naucalpan.html": {
+    "intro": "Rutas diarias en Naucalpan Centro, Echegaray, San Mateo, Lomas Verdes y Satélite. Referencia en la zona por velocidad hacia corporativos y fraccionamientos.",
+    "steps": [
+      "Pide por persona o por evento en Naucalpan o Satélite.",
+      "Envía colonia y hora; cubrimos Echegaray y San Mateo sin problema.",
+      "Canasta caliente en tu puerta u oficina en minutos acordados."
+    ],
+    "empresa": "Facturación y logística para empresas en Naucalpan Centro y corredor Satélite–Interlomas."
+  },
+  "nicolasromero.html": {
+    "intro": "Llegamos a Nicolás Romero, Ciudad Nicolás Romero, La Colmena, Barrón y Progreso Industrial. Desayunos para plantas automotrices y familias del norponiente del Edomex.",
+    "steps": [
+      "Define tacos por persona para tu zona en Nicolás Romero.",
+      "WhatsApp con colonia y número de asistentes al evento.",
+      "Entregamos en nave, oficina o domicilio en el municipio."
+    ],
+    "empresa": "Volumen industrial en Nicolás Romero: puntualidad tipo línea de producción y CFDI."
+  },
+  "satelite.html": {
+    "intro": "Especialistas en Ciudad Satélite, Torres, Circuito Ingenieros y Boulevares. Pedidos frecuentes de oficinas en corporativos y eventos en zonas residenciales de Naucalpan.",
+    "steps": [
+      "Elige canasta para tu torre o fraccionamiento en Satélite.",
+      "Indica edificio, colonia y hora por WhatsApp.",
+      "Reparto rápido en Circuito Ingenieros y zonas aledañas."
+    ],
+    "empresa": "Catering para torres de oficinas en Satélite y Naucalpan, con montaje y factura corporativa."
+  },
+  "tepotzotlan.html": {
+    "intro": "Cobertura en Tepotzotlán Centro, zona industrial, San Mateo Xoloc y fraccionamientos del norte. Ideal para plantas, turismo de plaza y eventos familiares.",
+    "steps": [
+      "Arma tu pedido para Tepotzotlán o zona industrial.",
+      "Confirma ubicación y horario por WhatsApp.",
+      "Llevamos tacos calientes a planta, bodega o casa."
+    ],
+    "empresa": "Desayunos para industria y comercios en Tepotzotlán con facturación CFDI al día."
+  },
+  "tlalnepantla.html": {
+    "intro": "Referencia en Tlalnepantla: Tlalne Centro, La Florida, Valle Dorado, Mundo E y Los Reyes Ixtacala. Rutas optimizadas para parques corporativos y vivienda densa.",
+    "steps": [
+      "Selecciona paquete según tu evento cerca de Mundo E o centro.",
+      "WhatsApp con colonia y hora de entrega en Tlalnepantla.",
+      "Canasta puntual para oficina, fiesta o reunión de trabajo."
+    ],
+    "empresa": "Eventos corporativos en Mundo E y La Florida: factura inmediata y despachador incluido en premium."
+  },
+  "tultitlan.html": {
+    "intro": "Servicio en Tultitlán Centro, San Antonio, San Pablo de las Salinas y zona industrial. Desayunos masivos para maquilas y celebraciones en el oriente del Estado de México.",
+    "steps": [
+      "Cuéntanos personas y sabores para Tultitlán o San Antonio.",
+      "Manda dirección industrial o residencial por WhatsApp.",
+      "Entrega en horario de comida sin afectar tu operación."
+    ],
+    "empresa": "Alimentación para plantas en Tultitlán: capacidad alta, higiene y CFDI deducible."
+  }
+}
